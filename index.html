@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theshu (Pty) Ltd - Professional Catering, Supply & Cleaning Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Color scheme inspired by the profile */
+        :root {
+            --primary-blue: #1e3a8a;
+            --secondary-blue: #3b82f6;
+            --accent-orange: #f97316;
+            --light-gray: #f8fafc;
+            --dark-gray: #374151;
+            --white: #ffffff;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header.scrolled {
+            background: rgba(30, 58, 138, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--white);
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-img {
+            width: 40px;
+            height: 40px;
+            background: var(--accent-orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            font-weight: 500;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent-orange);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after, .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(30, 58, 138, 0.8), rgba(30, 58, 138, 0.8)), url('https://images.unsplash.com/photo-1527525443983-6e60c75fff46?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            padding: 10rem 2rem 6rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .badge:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-orange);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease 0.6s both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid white;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 3rem 2rem;
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--accent-orange);
+        }
+
+        .stat-text {
+            font-size: 1.1rem;
+        }
+
+        /* Company Info Cards */
+        .company-info {
+            padding: 4rem 2rem;
+            background: var(--light-gray);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--accent-orange);
+            border-radius: 2px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .info-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-orange));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .info-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .info-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-card p {
+            margin-bottom: 0.5rem;
+        }
+
+        .info-card .card-footer {
+            margin-top: auto;
+            padding-top: 1rem;
+            font-size: 0.9rem;
+            color: var(--dark-gray);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, var(--light-gray) 0%, white 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid #e5e7eb;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .service-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: var(--accent-orange);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .service-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .service-card:hover h3 {
+            color: var(--accent-orange);
+        }
+
+        .service-card ul {
+            list-style: none;
+            position: relative;
+            z-index: 2;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card li {
+            padding: 0.3rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .service-card li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: var(--accent-orange);
+            font-size: 0.8rem;
+        }
+
+        .service-cta {
+            margin-top: auto;
+            color: var(--primary-blue);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-cta {
+            color: var(--accent-orange);
+        }
+
+        /* Compliance Section */
+        .compliance {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--light-gray) 0%, white 100%);
+        }
+
+        .compliance-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .compliance-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .compliance-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .compliance-icon {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        /* About Section */
+        .about {
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: var(--dark-gray);
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, var(--accent-orange), transparent);
+            padding: 0.2rem 0.5rem;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .director-profile {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: left;
+        }
+
+        .director-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: var(--primary-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            flex-shrink: 0;
+        }
+
+        .director-info h3 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .director-title {
+            color: var(--accent-orange);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            color: white;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 4rem;
+            opacity: 0.2;
+            line-height: 1;
+        }
+
+        .testimonial-text {
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--accent-orange);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 4rem 2rem;
+            background: var(--light-gray);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            height: 250px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            padding: 1.5rem;
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 4rem 2rem;
+            background: var(--light-gray);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--accent-orange);
+        }
+
+        .contact-form {
+            grid-column: 1 / -1;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-top: 2rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent-orange);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: var(--accent-orange);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: var(--primary-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-blue);
+            color: white;
+            padding: 3rem 2rem 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-col h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent-orange);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-orange);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--accent-orange);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--accent-orange);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--primary-blue);
+            transform: translateY(-5px);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--primary-blue);
+                flex-direction: column;
+                padding: 1rem;
+                gap: 1rem;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .director-profile {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-img">T</div>
+                <span>Theshu</span>
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 data-aos="fade-up">Theshu (Pty) Ltd</h1>
+            <p data-aos="fade-up" data-aos-delay="100">Professional Event Management, Catering, Cleaning & Supply Services</p>
+            
+            <div class="hero-badges" data-aos="fade-up" data-aos-delay="200">
+                <div class="badge">
+                    <i class="fas fa-certificate"></i>
+                    <span>100% Black Female Owned</span>
+                </div>
+                <div class="badge">
+                    <i class="fas fa-check-circle"></i>
+                    <span>SARS Compliant</span>
+                </div>
+                <div class="badge">
+                    <i class="fas fa-award"></i>
+                    <span>BEE Active</span>
+                </div>
+            </div>
+            
+            <div class="cta-buttons" data-aos="fade-up" data-aos-delay="300">
+                <a href="#contact" class="cta-button">Get Started Today</a>
+                <a href="services.html" class="cta-button secondary">Our Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-grid">
+            <div class="stat-item" data-aos="fade-up">
+                <div class="stat-number" data-count="50">0</div>
+                <div class="stat-text">Projects Completed</div>
+            </div>
+            <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+                <div class="stat-number" data-count="3">0</div>
+                <div class="stat-text">Years of Experience</div>
+            </div>
+            <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+                <div class="stat-number" data-count="100">0</div>
+                <div class="stat-text">Satisfied Clients</div>
+            </div>
+            <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+                <div class="stat-number" data-count="6">0</div>
+                <div class="stat-text">Services Offered</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Company Info -->
+    <section class="company-info">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Company Overview</h2>
+            <div class="info-grid">
+                <div class="info-card" data-aos="fade-up" data-aos-delay="100">
+                    <h3><i class="fas fa-building"></i> Company Details</h3>
+                    <p><strong>Registration:</strong> 2020/933755/07</p>
+                    <p><strong>Founded:</strong> December 21, 2020</p>
+                    <p><strong>Status:</strong> Active & Compliant</p>
+                    <p><strong>Type:</strong> Private Company</p>
+                    <p><strong>CSD Number:</strong> MAAA1041196</p>
+                    <div class="card-footer">
+                        <i class="fas fa-info-circle"></i> Fully registered and compliant
+                    </div>
+                </div>
+                <div class="info-card" data-aos="fade-up" data-aos-delay="200">
+                    <h3><i class="fas fa-user-tie"></i> Leadership</h3>
+                    <p><strong>Director:</strong> Mrs. Boitumelo Gladness Shushu</p>
+                    <p>100% Black Female Owned Enterprise</p>
+                    <p>Years of mining industry experience</p>
+                    <p>Committed to youth empowerment</p>
+                    <p>Community development focus</p>
+                    <div class="card-footer">
+                        <i class="fas fa-bullseye"></i> Setting examples for young entrepreneurs
+                    </div>
+                </div>
+                <div class="info-card" data-aos="fade-up" data-aos-delay="300">
+                    <h3><i class="fas fa-map-marker-alt"></i> Location & Compliance</h3>
+                    <p><strong>Address:</strong> 4277 Springbok Street</p>
+                    <p>White City, Postmasburg, 8420, NC</p>
+                    <p><strong>SARS:</strong> Compliant (Tax No: 9757094181)</p>
+                    <p><strong>BEE Status:</strong> Active</p>
+                    <p><strong>Labor:</strong> Letter of Good Standing</p>
+                    <div class="card-footer">
+                        <i class="fas fa-check-double"></i> Fully compliant with all regulations
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <h3><i class="fas fa-utensils"></i> Event Catering</h3>
+                    <ul>
+                        <li>Weddings</li>
+                        <li>Birthday Parties</li>
+                        <li>Graduation Parties</li>
+                        <li>Baby Shower Parties</li>
+                        <li>Funerals</li>
+                        <li>Government Gatherings</li>
+                    </ul>
+                    <a href="#contact" class="service-cta">
+                        <span>Request catering services</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="150">
+                    <h3><i class="fas fa-palette"></i> Event Decoration</h3>
+                    <ul>
+                        <li>Wedding Decor</li>
+                        <li>Party Decorations</li>
+                        <li>Graduation Setups</li>
+                        <li>Baby Shower Themes</li>
+                        <li>Memorial Services</li>
+                        <li>Corporate Events</li>
+                    </ul>
+                    <a href="#contact" class="service-cta">
+                        <span>Discuss decoration needs</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <h3><i class="fas fa-broom"></i> Cleaning Services</h3>
+                    <ul>
+                        <li>Residential Cleaning</li>
+                        <li>Commercial Cleaning</li>
+                        <li>Industrial Cleaning</li>
+                        <li>Disinfection Services</li>
+                        <li>Regular Maintenance</li>
+                        <li>Deep Cleaning</li>
+                    </ul>
+                    <a href="#contact" class="service-cta">
+                        <span>Get a cleaning quote</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="250">
+                    <h3><i class="fas fa-truck-loading"></i> Supply Services</h3>
+                    <ul>
+                        <li>Cleaning Materials</li>
+                        <li>Food Parcels</li>
+                        <li>Office Stationery</li>
+                        <li>Office Furniture</li>
+                        <li>Office Equipment</li>
+                        <li>Disinfectants</li>
+                    </ul>
+                    <a href="#contact" class="service-cta">
+                        <span>Inquire about supplies</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <h3><i class="fas fa-tents"></i> Equipment Rental</h3>
+                    <ul>
+                        <li>Tents & Marquees</li>
+                        <li>Chairs & Tables</li>
+                        <li>Event Furniture</li>
+                        <li>Audio Equipment</li>
+                        <li>Lighting Solutions</li>
+                        <li>Setup & Breakdown</li>
+                    </ul>
+                    <a href="#contact" class="service-cta">
+                        <span>Check availability</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="350">
+                    <h3><i class="fas fa-monument"></i> Memorial Services</h3>
+                    <ul>
+                        <li>Tombstone Supply</li>
+                        <li>Memorial Decorations</li>
+                        <li>Funeral Catering</li>
+                        <li>Venue Setup</li>
+                        <li>Complete Packages</li>
+                        <li>Compassionate Service</li>
+                    </ul>
+                    <a href="#contact" class="service-cta">
+                        <span>Get compassionate assistance</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compliance Section -->
+    <section class="compliance" id="compliance">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Our Compliance</h2>
+            <p class="about-content" style="text-align: center; margin-bottom: 2rem;" data-aos="fade-up">
+                Theshu (Pty) Ltd maintains full compliance with all regulatory requirements, ensuring we meet the highest standards of business practice.
+            </p>
+            <div class="compliance-grid">
+                <div class="compliance-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="compliance-icon">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <h3>Company Registration</h3>
+                    <p>Fully registered with CIPC (2020/933755/07)</p>
+                </div>
+                <div class="compliance-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="compliance-icon">
+                        <i class="fas fa-receipt"></i>
+                    </div>
+                    <h3>Tax Compliance</h3>
+                    <p>SARS Compliant (Tax No: 9757094181)</p>
+                </div>
+                <div class="compliance-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="compliance-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>BEE Status</h3>
+                    <p>Active BEE Compliance</p>
+                </div>
+                <div class="compliance-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="compliance-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Labor Compliance</h3>
+                    <p>Letter of Good Standing</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">About Theshu</h2>
+            <div class="about-content">
+                <p data-aos="fade-up">Theshu (Pty) Ltd is a <span class="highlight">100% black female owned</span> private company located in the Tsantsabane area of Postmasburg, Northern Cape. Founded and managed by Mrs. Boitumelo Gladness Shushu, our company brings years of mining industry experience to the service sector.</p>
+                
+                <p data-aos="fade-up" data-aos-delay="100">Our mission is to provide exceptional event management, catering, cleaning, and supply services while <span class="highlight">empowering unemployed youth</span> within our community. We take pride in setting an example for young females who aspire to become entrepreneurs.</p>
+                
+                <p data-aos="fade-up" data-aos-delay="200">At Theshu, we are committed to achieving <span class="highlight">Zero Harm</span> to our employees, service providers, and the communities we serve. Our comprehensive safety programme and BBBEE compliance ensure we operate with the highest standards of excellence and integrity.</p>
+
+                <div class="director-profile" data-aos="fade-up" data-aos-delay="300">
+                    <div class="director-image">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="director-info">
+                        <h3>Mrs. Boitumelo Gladness Shushu</h3>
+                        <div class="director-title">General Director</div>
+                        <p>With years of experience in the mining industry, Mrs. Shushu leads Theshu (Pty) Ltd with a vision to empower communities and create opportunities for young entrepreneurs. Her leadership focuses on excellence, compliance, and social responsibility.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title" style="color: white;" data-aos="fade-up">Client Testimonials</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-text">
+                        "Theshu provided exceptional catering services for our corporate event. The food was delicious and the service was professional. Highly recommended!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JM</div>
+                        <div>
+                            <div class="author-name">John M.</div>
+                            <div class="author-title">Corporate Client</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial-text">
+                        "We hired Theshu for our wedding decorations and tent rental. They transformed our venue beautifully and made our special day even more memorable."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SN</div>
+                        <div>
+                            <div class="author-name">Sarah N.</div>
+                            <div class="author-title">Wedding Client</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="testimonial-text">
+                        "Their cleaning services have been invaluable to our office. Reliable, thorough, and reasonably priced. A pleasure to work with."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">TK</div>
+                        <div>
+                            <div class="author-name">Thomas K.</div>
+                            <div class="author-title">Business Owner</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Our Work</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Event Decoration">
+                    <div class="gallery-overlay">
+                        <h3>Event Decoration</h3>
+                    </div>
+                </div>
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="150">
+                    <img src="https://images.unsplash.com/photo-1555244162-803834f70033?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Catering Services">
+                    <div class="gallery-overlay">
+                        <h3>Catering Services</h3>
+                    </div>
+                </div>
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Cleaning Services">
+                    <div class="gallery-overlay">
+                        <h3>Cleaning Services</h3>
+                    </div>
+                </div>
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="250">
+                    <img src="https://images.unsplash.com/photo-1535016120720-40c646be5580?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Tent Rental">
+                    <div class="gallery-overlay">
+                        <h3>Tent Rental</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Contact Us</h2>
+            <div class="contact-grid">
+                <div class="contact-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                    <h3>Phone</h3>
+                    <p>076 309 5296</p>
+                </div>
+                <div class="contact-item" data-aos="fade-up" data-aos-delay="150">
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <h3>Email</h3>
+                    <p>theshubusiness@gmail.com</p>
+                </div>
+                <div class="contact-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <h3>Address</h3>
+                    <p>4277 Springbok Street<br>White City, Postmasburg<br>8420, Northern Cape</p>
+                </div>
+                <div class="contact-item" data-aos="fade-up" data-aos-delay="250">
+                    <div class="contact-icon"><i class="fas fa-id-card"></i></div>
+                    <h3>CSD Number</h3>
+                    <p>MAAA1041196</p>
+                </div>
+            </div>
+
+            <div class="contact-form" data-aos="fade-up" data-aos-delay="300">
+                <h3 style="text-align: center; margin-bottom: 1.5rem; color: var(--primary-blue);">Send us a message</h3>
+                <form id="contactForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service Needed</label>
+                            <select id="service">
+                                <option value="">Select a service</option>
+                                <option value="catering">Event Catering</option>
+                                <option value="decoration">Event Decoration</option>
+                                <option value="cleaning">Cleaning Services</option>
+                                <option value="supply">Supply Services</option>
+                                <option value="rental">Equipment Rental</option>
+                                <option value="memorial">Memorial Services</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" required></textarea>
+                    </div>
+                    <div style="text-align: center;">
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>Theshu (Pty) Ltd</h3>
+                <p>Professional event management, catering, cleaning, and supply services. 100% black female owned enterprise committed to excellence and community empowerment.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="services.html">Event Catering</a></li>
+                    <li><a href="services.html">Event Decoration</a></li>
+                    <li><a href="services.html">Cleaning Services</a></li>
+                    <li><a href="services.html">Supply Services</a></li>
+                    <li><a href="services.html">Equipment Rental</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-phone"></i> 076 309 5296</p>
+                <p><i class="fas fa-envelope"></i> theshubusiness@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> 4277 Springbok Street, Postmasburg, 8420</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Theshu (Pty) Ltd. All rights reserved. | Registration: 2020/933755/07</p>
+            <p>Empowering communities through professional services and entrepreneurship</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#home" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            const backToTop = document.querySelector('.back-to-top');
+            
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+                backToTop.classList.add('visible');
+            } else {
+                header.classList.remove('scrolled');
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        // Mobile menu toggle
+        const menuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simple form validation
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            if (name && email && message) {
+                // Here you would typically send the form data to a server
+                alert('Thank you for your message! We will contact you shortly.');
+                this.reset();
+            } else {
+                alert('Please fill in all required fields.');
+            }
+        });
+
+        // Counter animation for stats
+        const counters = document.querySelectorAll('.stat-number');
+        const speed = 200;
+
+        const animateCounters = () => {
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-count');
+                const count = +counter.innerText;
+                const increment = Math.ceil(target / speed);
+                
+                if (count < target) {
+                    counter.innerText = count + increment;
+                    setTimeout(() => animateCounters(), 1);
+                } else {
+                    counter.innerText = target;
+                }
+            });
+        };
+
+        // Start counter animation when stats section is in view
+        const statsSection = document.querySelector('.stats');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        observer.observe(statsSection);
+    </script>
+</body>
+</html>

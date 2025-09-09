@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - Theshu (Pty) Ltd</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+            background-color: #f8fafc;
+        }
+
+        /* Color scheme */
+        :root {
+            --primary-blue: #1e3a8a;
+            --secondary-blue: #3b82f6;
+            --accent-orange: #f97316;
+            --light-gray: #f8fafc;
+            --dark-gray: #374151;
+            --white: #ffffff;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--white);
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-img {
+            width: 40px;
+            height: 40px;
+            background: var(--accent-orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            font-weight: 500;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent-orange);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(30, 58, 138, 0.8), rgba(30, 58, 138, 0.8)), url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 68px;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .page-header-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .breadcrumb a {
+            color: var(--accent-orange);
+            text-decoration: none;
+        }
+
+        .breadcrumb span {
+            margin: 0 0.5rem;
+            color: #ddd;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 4rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--accent-orange);
+            border-radius: 2px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .service-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .service-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+        }
+
+        .service-icon {
+            position: absolute;
+            bottom: -30px;
+            left: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--accent-orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            z-index: 3;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .service-content {
+            padding: 2.5rem 1.5rem 1.5rem;
+        }
+
+        .service-content h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .service-content p {
+            color: var(--dark-gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-orange);
+            font-weight: bold;
+        }
+
+        .service-cta {
+            display: inline-block;
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .service-cta:hover {
+            background: var(--accent-orange);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Process Section */
+        .process {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--light-gray) 0%, white 100%);
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .process-step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background: var(--accent-orange);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .step-icon {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .step-title {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-orange);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid white;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background: #111;
+            color: white;
+            padding: 3rem 2rem 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-col h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent-orange);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-orange);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--primary-blue);
+                flex-direction: column;
+                padding: 1rem;
+                gap: 1rem;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .page-header p {
+                font-size: 1.1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-img">T</div>
+                <span>Theshu</span>
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html" class="active">Services</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="page-header-content">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <a href="services.html">Services</a>
+            </div>
+            <h1>Our Services</h1>
+            <p>Comprehensive solutions for all your event, catering, cleaning and supply needs</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title">What We Offer</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem; font-size: 1.1rem;">
+                Theshu (Pty) Ltd provides a wide range of professional services tailored to meet your specific needs. 
+                From event management to general supplies, we deliver quality and excellence in everything we do.
+            </p>
+
+            <div class="services-grid">
+                <!-- Catering Service -->
+                <div class="service-card">
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1555244162-803834f70033?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');">
+                        <div class="service-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3>Event Catering</h3>
+                        <p>Professional catering services for all types of events, from intimate gatherings to large corporate functions.</p>
+                        <ul class="service-features">
+                            <li>Weddings & Special Occasions</li>
+                            <li>Corporate Events</li>
+                            <li>Birthday Parties</li>
+                            <li>Funeral Services</li>
+                            <li>Government Gatherings</li>
+                            <li>Custom Menu Planning</li>
+                        </ul>
+                        <a href="#contact" class="service-cta">Request Catering</a>
+                    </div>
+                </div>
+
+                <!-- Decorations Service -->
+                <div class="service-card">
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');">
+                        <div class="service-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3>Event Decoration</h3>
+                        <p>Transform your venue with our creative and professional decoration services for any occasion.</p>
+                        <ul class="service-features">
+                            <li>Theme Development</li>
+                            <li>Venue Transformation</li>
+                            <li>Custom Decor Elements</li>
+                            <li>Floral Arrangements</li>
+                            <li>Backdrops & Photo Areas</li>
+                            <li>Complete Setup & Teardown</li>
+                        </ul>
+                        <a href="#contact" class="service-cta">Discuss Decor</a>
+                    </div>
+                </div>
+
+                <!-- Cleaning Service -->
+                <div class="service-card">
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');">
+                        <div class="service-icon">
+                            <i class="fas fa-broom"></i>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3>Cleaning Services</h3>
+                        <p>Comprehensive cleaning solutions for residential, commercial, and industrial properties.</p>
+                        <ul class="service-features">
+                            <li>Residential Cleaning</li>
+                            <li>Commercial Spaces</li>
+                            <li>Industrial Facilities</li>
+                            <li>Disinfection Services</li>
+                            <li>Post-Construction Cleanup</li>
+                            <li>Regular Maintenance Plans</li>
+                        </ul>
+                        <a href="#contact" class="service-cta">Get a Quote</a>
+                    </div>
+                </div>
+
+                <!-- Supply Service -->
+                <div class="service-card">
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');">
+                        <div class="service-icon">
+                            <i class="fas fa-truck-loading"></i>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3>General Supply</h3>
+                        <p>Reliable supply of quality products for offices, events, and everyday needs.</p>
+                        <ul class="service-features">
+                            <li>Cleaning Materials</li>
+                            <li>Office Stationery</li>
+                            <li>Food Parcels</li>
+                            <li>Office Furniture</li>
+                            <li>Equipment & Tools</li>
+                            <li>Custom Supply Solutions</li>
+                        </ul>
+                        <a href="#contact" class="service-cta">Inquire About Supplies</a>
+                    </div>
+                </div>
+
+                <!-- Tent Rental Service -->
+                <div class="service-card">
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1535016120720-40c646be5580?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');">
+                        <div class="service-icon">
+                            <i class="fas fa-tents"></i>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3>Tent & Equipment Rental</h3>
+                        <p>Complete event infrastructure solutions for outdoor and indoor events of all sizes.</p>
+                        <ul class="service-features">
+                            <li>Various Tent Sizes</li>
+                            <li>Chairs & Tables</li>
+                            <li>Event Furniture</li>
+                            <li>Lighting Solutions</li>
+                            <li>Setup & Breakdown</li>
+                            <li>Delivery Services</li>
+                        </ul>
+                        <a href="#contact" class="service-cta">Check Availability</a>
+                    </div>
+                </div>
+
+                <!-- Memorial Service -->
+                <div class="service-card">
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1580330459836-b6a4a7e7ef33?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');">
+                        <div class="service-icon">
+                            <i class="fas fa-monument"></i>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3>Memorial Services</h3>
+                        <p>Compassionate and professional services to honor and celebrate the lives of loved ones.</p>
+                        <ul class="service-features">
+                            <li>Tombstone Supply & Installation</li>
+                            <li>Memorial Decorations</li>
+                            <li>Funeral Catering</li>
+                            <li>Venue Setup</li>
+                            <li>Complete Memorial Packages</li>
+                            <li>Compassionate Support</li>
+                        </ul>
+                        <a href="#contact" class="service-cta">Get Assistance</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process">
+        <div class="container">
+            <h2 class="section-title">Our Process</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem; font-size: 1.1rem;">
+                We follow a structured approach to ensure we deliver exceptional service that meets your exact requirements and exceeds expectations.
+            </p>
+
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3 class="step-title">Consultation</h3>
+                    <p>We begin by understanding your specific needs, preferences, and budget to create a tailored solution.</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
+                    <h3 class="step-title">Planning</h3>
+                    <p>Our team develops a detailed plan outlining all aspects of the service, timeline, and requirements.</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="step-title">Agreement</h3>
+                    <p>We present a transparent proposal with clear pricing and terms for your approval.</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h3 class="step-title">Execution</h3>
+                    <p>Our skilled team delivers the service with attention to detail, quality, and professionalism.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to Get Started?</h2>
+            <p>Contact us today to discuss your needs and let us provide you with exceptional service that exceeds your expectations.</p>
+            <div class="cta-buttons">
+                <a href="contact.html" class="cta-button">Get in Touch</a>
+                <a href="tel:0763095296" class="cta-button secondary">Call Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>Theshu (Pty) Ltd</h3>
+                <p>Professional event management, catering, cleaning, and supply services. 100% black female owned enterprise committed to excellence and community empowerment.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="services.html">Event Catering</a></li>
+                    <li><a href="services.html">Event Decoration</a></li>
+                    <li><a href="services.html">Cleaning Services</a></li>
+                    <li><a href="services.html">Supply Services</a></li>
+                    <li><a href="services.html">Equipment Rental</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-phone"></i> 076 309 5296</p>
+                <p><i class="fas fa-envelope"></i> theshubusiness@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> 4277 Springbok Street, Postmasburg, 8420</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Theshu (Pty) Ltd. All rights reserved. | Registration: 2020/933755/07</p>
+            <p>Empowering communities through professional services and entrepreneurship</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .process-step').forEach(item => {
+            item.style.opacity = '0';
+            observer.observe(item);
+        });
+    </script>
+</body>
+</html>

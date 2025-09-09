@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Theshu (Pty) Ltd</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+            background-color: #f8fafc;
+        }
+
+        /* Color scheme */
+        :root {
+            --primary-blue: #1e3a8a;
+            --secondary-blue: #3b82f6;
+            --accent-orange: #f97316;
+            --light-gray: #f8fafc;
+            --dark-gray: #374151;
+            --white: #ffffff;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--white);
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-img {
+            width: 40px;
+            height: 40px;
+            background: var(--accent-orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            font-weight: 500;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent-orange);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(30, 58, 138, 0.8), rgba(30, 58, 138, 0.8)), url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 68px;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .page-header-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .breadcrumb a {
+            color: var(--accent-orange);
+            text-decoration: none;
+        }
+
+        .breadcrumb span {
+            margin: 0 0.5rem;
+            color: #ddd;
+        }
+
+        /* About Intro Section */
+        .about-intro {
+            padding: 4rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--accent-orange);
+            border-radius: 2px;
+        }
+
+        .intro-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .intro-text h2 {
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .intro-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, var(--accent-orange), transparent);
+            padding: 0.2rem 0.5rem;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .intro-image {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            position: relative;
+        }
+
+        .intro-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .intro-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Mission & Vision */
+        .mission-vision {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--light-gray) 0%, white 100%);
+        }
+
+        .mv-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .mv-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mv-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-orange));
+        }
+
+        .mv-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .mv-icon {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .mv-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* Leadership Section */
+        .leadership {
+            padding: 4rem 2rem;
+        }
+
+        .leader-profile {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            margin-top: 3rem;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .leader-image {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .leader-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .leader-info {
+            padding: 2.5rem;
+        }
+
+        .leader-info h2 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+            font-size: 2rem;
+        }
+
+        .leader-title {
+            color: var(--accent-orange);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .leader-bio {
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .leader-highlights {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .leader-highlights li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .leader-highlights li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-orange);
+            font-weight: bold;
+        }
+
+        /* Values Section */
+        .values {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            color: white;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .value-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-orange);
+        }
+
+        .value-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* Compliance Section */
+        .compliance {
+            padding: 4rem 2rem;
+        }
+
+        .compliance-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .compliance-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .compliance-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .compliance-icon {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--accent-orange) 0%, #fb923c 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--primary-blue);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid white;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background: #111;
+            color: white;
+            padding: 3rem 2rem 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-col h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent-orange);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-orange);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .intro-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .leader-profile {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--primary-blue);
+                flex-direction: column;
+                padding: 1rem;
+                gap: 1rem;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .page-header p {
+                font-size: 1.1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-img">T</div>
+                <span>Theshu</span>
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="page-header-content">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <a href="about.html">About Us</a>
+            </div>
+            <h1>About Theshu (Pty) Ltd</h1>
+            <p>Learn about our story, values, and commitment to excellence</p>
+        </div>
+    </section>
+
+    <!-- About Intro Section -->
+    <section class="about-intro">
+        <div class="container">
+            <div class="intro-content">
+                <div class="intro-text">
+                    <h2>Our Story</h2>
+                    <p>Theshu (Pty) Ltd is a <span class="highlight">100% black female owned</span> private company located in the Tsantsabane area of Postmasburg, Northern Cape. Founded and managed by Mrs. Boitumelo Gladness Shushu, our company brings years of mining industry experience to the service sector.</p>
+                    
+                    <p>Established in December 2020, Theshu has rapidly grown to become a trusted provider of event management, catering, cleaning, and supply services in the region. Our journey began with a vision to create a company that not only delivers exceptional services but also contributes to community development and youth empowerment.</p>
+                    
+                    <p>Today, we take pride in our reputation for reliability, quality, and professionalism. Our commitment to excellence has earned us the trust of clients across various sectors, from private events to government gatherings.</p>
+                </div>
+                <div class="intro-image">
+                    <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Theshu Team">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision Section -->
+    <section class="mission-vision">
+        <div class="container">
+            <h2 class="section-title">Our Mission & Vision</h2>
+            <div class="mv-grid">
+                <div class="mv-card">
+                    <div class="mv-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Our Mission</h3>
+                    <p>To provide exceptional event management, catering, cleaning, and supply services while empowering unemployed youth within our community through skills development and employment opportunities.</p>
+                </div>
+                <div class="mv-card">
+                    <div class="mv-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Our Vision</h3>
+                    <p>To be the leading service provider in the Northern Cape region, recognized for excellence, innovation, and our commitment to social responsibility and community development.</p>
+                </div>
+                <div class="mv-card">
+                    <div class="mv-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Our Promise</h3>
+                    <p>We are committed to delivering quality services with integrity, professionalism, and attention to detail, ensuring complete client satisfaction with every project we undertake.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Section -->
+    <section class="leadership">
+        <div class="container">
+            <h2 class="section-title">Our Leadership</h2>
+            <div class="leader-profile">
+                <div class="leader-image">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Mrs. Boitumelo Gladness Shushu">
+                </div>
+                <div class="leader-info">
+                    <h2>Mrs. Boitumelo Gladness Shushu</h2>
+                    <div class="leader-title">General Director & Founder</div>
+                    
+                    <div class="leader-bio">
+                        <p>Mrs. Shushu brings years of valuable experience from the mining industry to the service sector. Her vision and leadership have been instrumental in establishing Theshu (Pty) Ltd as a reputable service provider in the Northern Cape region.</p>
+                        
+                        <p>As a passionate advocate for youth empowerment and female entrepreneurship, Mrs. Shushu is committed to creating opportunities for young people in the community while delivering exceptional services to clients.</p>
+                    </div>
+                    
+                    <ul class="leader-highlights">
+                        <li>Extensive experience in the mining industry</li>
+                        <li>Passionate about youth development and empowerment</li>
+                        <li>Committed to community development initiatives</li>
+                        <li>Advocate for female entrepreneurship</li>
+                        <li>Focus on excellence and quality service delivery</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Our Values</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Excellence</h3>
+                    <p>We strive for excellence in everything we do, from service delivery to client interactions.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Community</h3>
+                    <p>We are committed to empowering our community through job creation and skills development.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Integrity</h3>
+                    <p>We conduct our business with honesty, transparency, and ethical practices.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Innovation</h3>
+                    <p>We continuously seek innovative solutions to meet our clients' evolving needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compliance Section -->
+    <section class="compliance">
+        <div class="container">
+            <h2 class="section-title">Our Compliance</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem; font-size: 1.1rem;">
+                Theshu (Pty) Ltd maintains full compliance with all regulatory requirements, ensuring we meet the highest standards of business practice.
+            </p>
+            <div class="compliance-grid">
+                <div class="compliance-item">
+                    <div class="compliance-icon">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <h3>Company Registration</h3>
+                    <p>Fully registered with CIPC (2020/933755/07)</p>
+                </div>
+                <div class="compliance-item">
+                    <div class="compliance-icon">
+                        <i class="fas fa-receipt"></i>
+                    </div>
+                    <h3>Tax Compliance</h3>
+                    <p>SARS Compliant (Tax No: 9757094181)</p>
+                </div>
+                <div class="compliance-item">
+                    <div class="compliance-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>BEE Status</h3>
+                    <p>Active BEE Compliance</p>
+                </div>
+                <div class="compliance-item">
+                    <div class="compliance-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Labor Compliance</h3>
+                    <p>Letter of Good Standing</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Partner With Us</h2>
+            <p>Experience the Theshu difference for your next event, project, or supply needs. Contact us today to discuss how we can serve you.</p>
+            <div class="cta-buttons">
+                <a href="contact.html" class="cta-button">Get in Touch</a>
+                <a href="services.html" class="cta-button secondary">Our Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>Theshu (Pty) Ltd</h3>
+                <p>Professional event management, catering, cleaning, and supply services. 100% black female owned enterprise committed to excellence and community empowerment.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="services.html">Event Catering</a></li>
+                    <li><a href="services.html">Event Decoration</a></li>
+                    <li><a href="services.html">Cleaning Services</a></li>
+                    <li><a href="services.html">Supply Services</a></li>
+                    <li><a href="services.html">Equipment Rental</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-phone"></i> 076 309 5296</p>
+                <p><i class="fas fa-envelope"></i> theshubusiness@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> 4277 Springbok Street, Postmasburg, 8420</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Theshu (Pty) Ltd. All rights reserved. | Registration: 2020/933755/07</p>
+            <p>Empowering communities through professional services and entrepreneurship</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.mv-card, .value-card, .compliance-item').forEach(item => {
+            item.style.opacity = '0';
+            observer.observe(item);
+        });
+    </script>
+</body>
+</html>
