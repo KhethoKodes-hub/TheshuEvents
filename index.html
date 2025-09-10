@@ -6,6 +6,7 @@
     <title>Theshu (Pty) Ltd - Professional Catering, Supply & Cleaning Services</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="icon" type="image/png" href="assets/theshulogo.png">
     <style>
         * {
             margin: 0;
@@ -21,7 +22,6 @@
             scroll-behavior: smooth;
         }
 
-        /* Color scheme inspired by the profile */
         :root {
             --primary-blue: #1e3a8a;
             --secondary-blue: #3b82f6;
@@ -31,7 +31,6 @@
             --white: #ffffff;
         }
 
-        /* Header */
         .header {
             background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
             color: white;
@@ -70,16 +69,7 @@
             transition: transform 0.3s ease;
         }
 
-        .logo-img {
-            width: 40px;
-            height: 40px;
-            background: var(--accent-orange);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-        }
+       
 
         .logo:hover {
             transform: scale(1.05);
@@ -123,9 +113,8 @@
             cursor: pointer;
         }
 
-        /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(30, 58, 138, 0.8), rgba(30, 58, 138, 0.8)), url('https://images.unsplash.com/photo-1527525443983-6e60c75fff46?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background: linear-gradient(rgba(30, 58, 138, 0.8), rgba(30, 58, 138, 0.8)), url('./assets/eventher.png');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -241,7 +230,6 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
-        /* Stats Section */
         .stats {
             padding: 3rem 2rem;
             background: var(--primary-blue);
@@ -272,7 +260,6 @@
             font-size: 1.1rem;
         }
 
-        /* Company Info Cards */
         .company-info {
             padding: 4rem 2rem;
             background: var(--light-gray);
@@ -363,7 +350,6 @@
             color: var(--dark-gray);
         }
 
-        /* Services Section */
         .services {
             padding: 4rem 2rem;
             background: white;
@@ -460,7 +446,6 @@
             color: var(--accent-orange);
         }
 
-        /* Compliance Section */
         .compliance {
             padding: 4rem 2rem;
             background: linear-gradient(135deg, var(--light-gray) 0%, white 100%);
@@ -493,7 +478,6 @@
             margin-bottom: 1rem;
         }
 
-        /* About Section */
         .about {
             padding: 4rem 2rem;
             background: white;
@@ -554,7 +538,6 @@
             margin-bottom: 1rem;
         }
 
-        /* Testimonials */
         .testimonials {
             padding: 4rem 2rem;
             background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
@@ -608,7 +591,6 @@
             font-weight: bold;
         }
 
-        /* Gallery Section */
         .gallery {
             padding: 4rem 2rem;
             background: var(--light-gray);
@@ -655,7 +637,6 @@
             transform: translateY(0);
         }
 
-        /* Contact Section */
         .contact {
             padding: 4rem 2rem;
             background: var(--light-gray);
@@ -754,7 +735,6 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        /* Footer */
         .footer {
             background: var(--primary-blue);
             color: white;
@@ -835,7 +815,6 @@
             border-top: 1px solid rgba(255,255,255,0.1);
         }
 
-        /* Back to Top Button */
         .back-to-top {
             position: fixed;
             bottom: 2rem;
@@ -865,7 +844,6 @@
             transform: translateY(-5px);
         }
 
-        /* Animations */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -877,7 +855,6 @@
             }
         }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -925,20 +902,18 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header class="header">
         <div class="nav-container">
             <a href="index.html" class="logo">
-                <div class="logo-img">T</div>
-                <span>Theshu</span>
+                <img src="assets/theshulogo.png" alt="Theshu Logo" height="80" length="80"class="logo-img">
             </a>
             <nav>
                 <ul class="nav-links">
                     <li><a href="#home" class="active">Home</a></li>
                     <li><a href="services.html">Services</a></li>
                     <li><a href="about.html">About</a></li>
-                    <li><a href="#testimonials">Testimonials</a></li>
-                    <li><a href="#gallery">Gallery</a></li>
+                    <!--<li><a href="#testimonials">Testimonials</a></li>-->
+                    <!--<li><a href="#gallery">Gallery</a></li>-->
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 <button class="mobile-menu-btn">
@@ -948,7 +923,6 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
             <h1 data-aos="fade-up">Theshu (Pty) Ltd</h1>
@@ -976,7 +950,6 @@
         </div>
     </section>
 
-    <!-- Stats Section -->
     <section class="stats">
         <div class="stats-grid">
             <div class="stat-item" data-aos="fade-up">
@@ -998,7 +971,6 @@
         </div>
     </section>
 
-    <!-- Company Info -->
     <section class="company-info">
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">Company Overview</h2>
@@ -1040,7 +1012,6 @@
         </div>
     </section>
 
-    <!-- Services Section -->
     <section class="services" id="services">
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">Our Services</h2>
@@ -1139,7 +1110,6 @@
         </div>
     </section>
 
-    <!-- Compliance Section -->
     <section class="compliance" id="compliance">
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">Our Compliance</h2>
@@ -1179,7 +1149,6 @@
         </div>
     </section>
 
-    <!-- About Section -->
     <section class="about" id="about">
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">About Theshu</h2>
@@ -1204,7 +1173,6 @@
         </div>
     </section>
 
-    <!-- Testimonials -->
     <section class="testimonials" id="testimonials">
         <div class="container">
             <h2 class="section-title" style="color: white;" data-aos="fade-up">Client Testimonials</h2>
@@ -1249,7 +1217,6 @@
         </div>
     </section>
 
-    <!-- Gallery Section -->
     <section class="gallery" id="gallery">
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">Our Work</h2>
@@ -1267,13 +1234,13 @@
                     </div>
                 </div>
                 <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
-                    <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Cleaning Services">
+                    <img src="assets/cleaningservice.png" alt="Cleaning Services">
                     <div class="gallery-overlay">
                         <h3>Cleaning Services</h3>
                     </div>
                 </div>
                 <div class="gallery-item" data-aos="fade-up" data-aos-delay="250">
-                    <img src="https://images.unsplash.com/photo-1535016120720-40c646be5580?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Tent Rental">
+                    <img src="assets/tent.jpeg" alt="Tent Rental">
                     <div class="gallery-overlay">
                         <h3>Tent Rental</h3>
                     </div>
@@ -1282,7 +1249,6 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">Contact Us</h2>
@@ -1351,17 +1317,16 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="footer-grid">
             <div class="footer-col">
                 <h3>Theshu (Pty) Ltd</h3>
                 <p>Professional event management, catering, cleaning, and supply services. 100% black female owned enterprise committed to excellence and community empowerment.</p>
                 <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.facebook.com/share/19hMUSmaN3/?mibextid=wwXIfr"><i class="fab fa-facebook-f"></i></a>
+                    <!--<a href="#"><i class="fab fa-twitter"></i></a>-->
+                    <!--<a href="#"><i class="fab fa-instagram"></i></a>-->
+                    <!--<a href="#"><i class="fab fa-linkedin-in"></i></a>-->
                 </div>
             </div>
             <div class="footer-col">
@@ -1370,7 +1335,7 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="services.html">Services</a></li>
                     <li><a href="about.html">About Us</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -1396,21 +1361,18 @@
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
     <a href="#home" class="back-to-top">
         <i class="fas fa-arrow-up"></i>
     </a>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-        // Initialize AOS
         AOS.init({
             duration: 800,
             easing: 'ease-in-out',
             once: true
         });
 
-        // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1423,7 +1385,6 @@
             });
         });
 
-        // Header scroll effect
         window.addEventListener('scroll', function() {
             const header = document.querySelector('.header');
             const backToTop = document.querySelector('.back-to-top');
@@ -1437,7 +1398,6 @@
             }
         });
 
-        // Mobile menu toggle
         const menuBtn = document.querySelector('.mobile-menu-btn');
         const navLinks = document.querySelector('.nav-links');
         
@@ -1445,24 +1405,20 @@
             navLinks.classList.toggle('active');
         });
 
-        // Close mobile menu when clicking on a link
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
             });
         });
 
-        // Form submission
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Simple form validation
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const message = document.getElementById('message').value;
             
             if (name && email && message) {
-                // Here you would typically send the form data to a server
                 alert('Thank you for your message! We will contact you shortly.');
                 this.reset();
             } else {
@@ -1470,7 +1426,6 @@
             }
         });
 
-        // Counter animation for stats
         const counters = document.querySelectorAll('.stat-number');
         const speed = 200;
 
@@ -1489,7 +1444,6 @@
             });
         };
 
-        // Start counter animation when stats section is in view
         const statsSection = document.querySelector('.stats');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
