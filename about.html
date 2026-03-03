@@ -3,874 +3,1357 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Theshu (Pty) Ltd</title>
+    <title>About Us — Theshu (Pty) Ltd</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" type="image/png" href="assets/TheshuLogo.png">
-
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --gold: #C9A84C;
+            --gold-light: #F0D080;
+            --navy: #0B1A33;
+            --navy-mid: #142240;
+            --navy-light: #1E3A6E;
+            --rose: #C05050;
+            --cream: #FAF6EF;
+            --glass: rgba(255,255,255,0.08);
+            --glass-border: rgba(255,255,255,0.15);
+            --text-light: rgba(255,255,255,0.85);
+            --text-muted: rgba(255,255,255,0.55);
         }
+
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
+            font-family: 'DM Sans', sans-serif;
+            background: var(--navy);
+            color: #fff;
             overflow-x: hidden;
-            background-color: #f8fafc;
         }
 
-        /* Color scheme */
-        :root {
-            --primary-blue: #1e3a8a;
-            --secondary-blue: #3b82f6;
-            --accent-orange: #f97316;
-            --light-gray: #f8fafc;
-            --dark-gray: #374151;
-            --white: #ffffff;
-        }
-
-        /* Header */
-        .header {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
-            color: white;
-            padding: 1rem 0;
+        body::before {
+            content: '';
             position: fixed;
-            width: 100%;
-            top: 0;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.4;
+        }
+
+        /* ─── NAV ─── */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
             z-index: 1000;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
+            padding: 1.2rem 2rem;
             display: flex;
+            align-items: center;
             justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
+            transition: all 0.4s ease;
         }
 
-        .logo {
+        nav.scrolled {
+            background: rgba(11, 26, 51, 0.88);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 0.8rem 2rem;
+        }
+
+        .nav-logo {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--white);
+            gap: 0.75rem;
             text-decoration: none;
-            transition: transform 0.3s ease;
         }
 
-       
+        .nav-logo-mark {
+            width: 44px; height: 44px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 1.3rem;
+            color: var(--navy);
+            flex-shrink: 0;
+        }
 
-        .logo:hover {
-            transform: scale(1.05);
+        .nav-logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.1;
+        }
+
+        .nav-logo-sub {
+            font-size: 0.65rem;
+            color: var(--gold);
+            font-family: 'DM Sans', sans-serif;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
         }
 
         .nav-links {
             display: flex;
+            gap: 2.5rem;
             list-style: none;
-            gap: 2rem;
         }
 
         .nav-links a {
-            color: white;
+            color: var(--text-light);
             text-decoration: none;
-            transition: all 0.3s ease;
-            position: relative;
+            font-size: 0.9rem;
             font-weight: 500;
+            letter-spacing: 0.05em;
+            position: relative;
+            transition: color 0.3s;
         }
 
         .nav-links a::after {
             content: '';
             position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: var(--accent-orange);
+            bottom: -4px; left: 0;
+            width: 0; height: 1.5px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
             transition: width 0.3s ease;
         }
 
-        .nav-links a:hover::after {
-            width: 100%;
+        .nav-links a:hover,
+        .nav-links a.active { color: var(--gold-light); }
+        .nav-links a:hover::after,
+        .nav-links a.active::after { width: 100%; }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--gold), #A07830);
+            color: var(--navy) !important;
+            padding: 0.5rem 1.4rem;
+            border-radius: 50px;
+            font-weight: 600 !important;
+            transition: all 0.3s ease !important;
         }
 
-        .mobile-menu-btn {
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(201,168,76,0.4);
+        }
+
+        .hamburger {
             display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
+            flex-direction: column;
+            gap: 5px;
             cursor: pointer;
+            padding: 6px;
+            z-index: 1001;
         }
 
-        .page-header {
-            background: linear-gradient(rgba(30, 58, 138, 0.8), rgba(30, 58, 138, 0.8)), url('./assets/ladyofiice.png');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 8rem 2rem 4rem;
-            text-align: center;
+        .hamburger span {
+            display: block;
+            width: 26px; height: 2px;
+            background: #fff;
+            border-radius: 2px;
+            transition: all 0.35s ease;
+            transform-origin: center;
+        }
+
+        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(11,26,51,0.97);
+            backdrop-filter: blur(20px);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2.5rem;
+        }
+
+        .mobile-menu.open { display: flex; }
+        .mobile-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+        .mobile-menu a:hover { color: var(--gold); }
+
+        /* ─── PAGE HERO ─── */
+        .page-hero {
             position: relative;
+            min-height: 65vh;
+            display: flex;
+            align-items: flex-end;
+            padding-bottom: 5rem;
             overflow: hidden;
-            margin-top: 68px;
         }
 
-        .page-header::before {
+        .page-hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=1600&q=80');
+            background-size: cover;
+            background-position: center top;
+            animation: kenburns 16s ease-in-out infinite alternate;
+        }
+
+        @keyframes kenburns {
+            from { transform: scale(1); }
+            to { transform: scale(1.06); }
+        }
+
+        .page-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(11,26,51,0.55) 0%,
+                rgba(11,26,51,0.75) 60%,
+                rgba(11,26,51,1) 100%
+            );
+        }
+
+        .page-hero-overlay::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grain)"/></svg>');
-            opacity: 0.3;
+            inset: 0;
+            background: radial-gradient(ellipse at 20% 30%, rgba(201,168,76,0.12) 0%, transparent 60%);
         }
 
-        .page-header-content {
-            max-width: 800px;
-            margin: 0 auto;
+        .page-hero-content {
             position: relative;
             z-index: 2;
-        }
-
-        .page-header h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease;
-        }
-
-        .page-header p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            animation: fadeInUp 1s ease 0.2s both;
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 2rem;
         }
 
         .breadcrumb {
             display: flex;
-            justify-content: center;
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease 0.4s both;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.82rem;
+            color: var(--text-muted);
         }
 
         .breadcrumb a {
-            color: var(--accent-orange);
+            color: var(--gold);
             text-decoration: none;
+            transition: color 0.3s;
+        }
+        .breadcrumb a:hover { color: var(--gold-light); }
+        .breadcrumb i { font-size: 0.6rem; }
+
+        .page-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.8rem, 6vw, 5.5rem);
+            font-weight: 900;
+            line-height: 1.05;
+            margin-bottom: 1.2rem;
         }
 
-        .breadcrumb span {
-            margin: 0 0.5rem;
-            color: #ddd;
+        .page-hero h1 em {
+            font-style: italic;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        /* About Intro Section */
-        .about-intro {
-            padding: 4rem 2rem;
+        .page-hero-sub {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 520px;
+            line-height: 1.7;
         }
 
-        .container {
+        /* ─── SHARED ─── */
+        section { padding: 6rem 2rem; }
+
+        .section-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(201,168,76,0.2), rgba(240,208,128,0.1));
+            border: 1px solid rgba(201,168,76,0.3);
+            color: var(--gold);
+            font-size: 0.75rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            margin-bottom: 1.2rem;
+        }
+
+        .section-heading {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4.5vw, 3rem);
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-heading em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .section-body {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* ─── STORY ─── */
+        .story-section {
+            background: var(--navy-mid);
+        }
+
+        .story-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .story-visual { position: relative; }
+
+        .story-img-main {
+            border-radius: 24px;
+            overflow: hidden;
+            height: 520px;
+        }
+
+        .story-img-main img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .story-img-main:hover img { transform: scale(1.04); }
+
+        .story-img-main::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom right, rgba(201,168,76,0.18), transparent);
+            z-index: 1;
+            pointer-events: none;
+            border-radius: 24px;
+        }
+
+        .story-float {
+            position: absolute;
+            bottom: -2rem;
+            right: -2rem;
+            background: linear-gradient(135deg, var(--gold), #A07830);
+            border-radius: 20px;
+            padding: 1.8rem 2rem;
+            color: var(--navy);
+            z-index: 2;
+            box-shadow: 0 20px 50px rgba(201,168,76,0.4);
+            min-width: 160px;
+            text-align: center;
+        }
+
+        .story-float strong {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 900;
+            line-height: 1;
+            display: block;
+        }
+
+        .story-float span {
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        .story-text .section-body {
+            margin-bottom: 1.5rem;
+        }
+
+        .story-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 2.5rem;
+        }
+
+        .story-stat {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 1.4rem;
+            transition: all 0.3s ease;
+        }
+
+        .story-stat:hover {
+            background: rgba(201,168,76,0.1);
+            border-color: rgba(201,168,76,0.3);
+        }
+
+        .story-stat-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 0.3rem;
+        }
+
+        .story-stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* ─── MISSION / VISION ─── */
+        .mv-section {
+            background: linear-gradient(180deg, var(--navy) 0%, var(--navy-mid) 100%);
+        }
+
+        .mv-section-inner {
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            color: var(--primary-blue);
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: var(--accent-orange);
-            border-radius: 2px;
-        }
-
-        .intro-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .intro-text h2 {
-            color: var(--primary-blue);
-            margin-bottom: 1.5rem;
-            font-size: 2rem;
-        }
-
-        .intro-text p {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-
-        .highlight {
-            background: linear-gradient(120deg, var(--accent-orange), transparent);
-            padding: 0.2rem 0.5rem;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-
-        .intro-image {
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-            position: relative;
-        }
-
-        .intro-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.5s ease;
-        }
-
-        .intro-image:hover img {
-            transform: scale(1.05);
-        }
-
-        /* Mission & Vision */
-        .mission-vision {
-            padding: 4rem 2rem;
-            background: linear-gradient(135deg, var(--light-gray) 0%, white 100%);
-        }
-
         .mv-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 4rem;
         }
 
         .mv-card {
-            background: white;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(16px);
+            border-radius: 24px;
             padding: 2.5rem 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            text-align: center;
-            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            transition: all 0.4s ease;
         }
 
         .mv-card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-blue), var(--accent-orange));
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
         }
 
-        .mv-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        .mv-card:hover { 
+            transform: translateY(-8px); 
+            border-color: rgba(201,168,76,0.35);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.35);
         }
+        .mv-card:hover::before { transform: scaleX(1); }
 
-        .mv-icon {
-            font-size: 2.5rem;
-            color: var(--primary-blue);
+        .mv-icon-wrap {
+            width: 64px; height: 64px;
+            background: linear-gradient(135deg, rgba(201,168,76,0.25), rgba(201,168,76,0.05));
+            border-radius: 18px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.6rem;
+            color: var(--gold);
             margin-bottom: 1.5rem;
         }
 
         .mv-card h3 {
-            color: var(--primary-blue);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
             margin-bottom: 1rem;
-            font-size: 1.5rem;
         }
 
-        /* Leadership Section */
-        .leadership {
-            padding: 4rem 2rem;
+        .mv-card p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            line-height: 1.75;
         }
 
-        .leader-profile {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 3rem;
-            margin-top: 3rem;
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .leader-image {
+        /* ─── VALUES ─── */
+        .values-section {
+            background: linear-gradient(135deg, var(--navy-light), var(--navy-mid));
             position: relative;
             overflow: hidden;
         }
 
-        .leader-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .leader-info {
-            padding: 2.5rem;
-        }
-
-        .leader-info h2 {
-            color: var(--primary-blue);
-            margin-bottom: 0.5rem;
-            font-size: 2rem;
-        }
-
-        .leader-title {
-            color: var(--accent-orange);
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem;
-        }
-
-        .leader-bio {
-            margin-bottom: 2rem;
-            line-height: 1.8;
-        }
-
-        .leader-highlights {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-
-        .leader-highlights li {
-            padding: 0.5rem 0;
-            position: relative;
-            padding-left: 1.5rem;
-        }
-
-        .leader-highlights li::before {
-            content: '✓';
+        .values-section::before {
+            content: '';
             position: absolute;
-            left: 0;
-            color: var(--accent-orange);
-            font-weight: bold;
+            width: 700px; height: 700px;
+            background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%);
+            top: -200px; left: -200px;
+            border-radius: 50%;
+            pointer-events: none;
         }
 
-        /* Values Section */
-        .values {
-            padding: 4rem 2rem;
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
-            color: white;
+        .values-inner {
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .values-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-top: 4rem;
         }
 
         .value-card {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 2rem;
-            border-radius: 15px;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(16px);
+            border-radius: 20px;
+            padding: 2rem 1.5rem;
             text-align: center;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .value-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(201,168,76,0.12), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
         }
 
         .value-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-8px);
+            border-color: rgba(201,168,76,0.4);
+            box-shadow: 0 20px 50px rgba(201,168,76,0.12);
         }
+        .value-card:hover::after { opacity: 1; }
 
-        .value-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--accent-orange);
+        .value-icon-wrap {
+            width: 64px; height: 64px;
+            background: linear-gradient(135deg, rgba(201,168,76,0.25), rgba(201,168,76,0.05));
+            border-radius: 18px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin: 0 auto 1.3rem;
+            position: relative;
+            z-index: 1;
         }
 
         .value-card h3 {
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 0.7rem;
+            position: relative;
+            z-index: 1;
         }
 
-        /* Compliance Section */
-        .compliance {
-            padding: 4rem 2rem;
+        .value-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.65;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ─── DIRECTOR ─── */
+        .director-section {
+            background: var(--navy-mid);
+        }
+
+        .director-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .director-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(20px);
+            border-radius: 28px;
+            padding: 4rem;
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 4rem;
+        }
+
+        .director-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light), transparent);
+        }
+
+        .director-card::after {
+            content: '';
+            position: absolute;
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%);
+            bottom: -200px; right: -100px;
+            pointer-events: none;
+        }
+
+        .director-avatar-wrap {
+            text-align: center;
+        }
+
+        .director-avatar {
+            width: 200px; height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--navy-light), var(--navy-mid));
+            border: 2px solid rgba(201,168,76,0.4);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 5rem;
+            color: var(--gold);
+            margin: 0 auto 1.5rem;
+            position: relative;
+        }
+
+        .director-avatar::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            background: conic-gradient(var(--gold), var(--gold-light), transparent, var(--gold));
+            z-index: -1;
+            animation: spin 8s linear infinite;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .director-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(201,168,76,0.2), rgba(201,168,76,0.05));
+            border: 1px solid rgba(201,168,76,0.3);
+            color: var(--gold);
+            font-size: 0.72rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.35rem 0.9rem;
+            border-radius: 50px;
+        }
+
+        .director-info { position: relative; z-index: 1; }
+
+        .director-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            line-height: 1.55;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+            border-left: 3px solid var(--gold);
+        }
+
+        .director-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .director-role {
+            color: var(--gold);
+            font-size: 0.85rem;
+            letter-spacing: 0.08em;
+            margin-bottom: 1.5rem;
+        }
+
+        .director-highlights {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            margin-top: 1.5rem;
+        }
+
+        .dir-highlight {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.88rem;
+            color: var(--text-light);
+        }
+
+        .dir-highlight i {
+            color: var(--gold);
+            font-size: 0.75rem;
+            flex-shrink: 0;
+        }
+
+        /* ─── COMPLIANCE ─── */
+        .compliance-section {
+            background: var(--navy);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .compliance-section::before {
+            content: '';
+            position: absolute;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%);
+            top: -200px; right: -200px;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .compliance-inner {
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .compliance-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-top: 4rem;
         }
 
-        .compliance-item {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        .compliance-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(16px);
+            border-radius: 20px;
+            padding: 2rem 1.5rem;
             text-align: center;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .compliance-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        .compliance-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(201,168,76,0.12), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
         }
 
-        .compliance-icon {
-            font-size: 2.5rem;
-            color: var(--primary-blue);
-            margin-bottom: 1rem;
+        .compliance-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(201,168,76,0.4);
+            box-shadow: 0 20px 50px rgba(201,168,76,0.15);
+        }
+        .compliance-card:hover::before { opacity: 1; }
+
+        .comp-icon {
+            width: 60px; height: 60px;
+            background: linear-gradient(135deg, rgba(201,168,76,0.25), rgba(201,168,76,0.05));
+            border-radius: 16px;
+            margin: 0 auto 1.2rem;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem;
+            color: var(--gold);
+            position: relative;
+            z-index: 1;
         }
 
-        /* CTA Section */
+        .compliance-card h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .compliance-card p {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ─── CTA ─── */
         .cta-section {
-            padding: 4rem 2rem;
-            background: linear-gradient(135deg, var(--accent-orange) 0%, #fb923c 100%);
-            color: white;
-            text-align: center;
+            background: linear-gradient(135deg, var(--navy-mid), var(--navy-light));
+            position: relative;
+            overflow: hidden;
         }
 
-        .cta-content {
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .cta-inner {
             max-width: 800px;
             margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
         }
 
-        .cta-content h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
+        .cta-inner h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 900;
+            margin-bottom: 1.2rem;
+            line-height: 1.15;
         }
 
-        .cta-content p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
+        .cta-inner h2 em {
+            font-style: italic;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .cta-buttons {
+        .cta-inner p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.75;
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-btns {
             display: flex;
             gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
         }
 
-        .cta-button {
-            display: inline-block;
-            background: var(--primary-blue);
-            color: white;
-            padding: 1rem 2rem;
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: linear-gradient(135deg, var(--gold) 0%, #A07830 100%);
+            color: var(--navy);
+            padding: 1rem 2.2rem;
             border-radius: 50px;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .btn-primary:hover::before { opacity: 1; }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(201,168,76,0.4); }
+        .btn-primary span, .btn-primary i { position: relative; z-index: 1; }
+
+        .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(12px);
+            color: #fff;
+            padding: 1rem 2.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
             transition: all 0.3s ease;
         }
 
-        .cta-button.secondary {
-            background: transparent;
-            border: 2px solid white;
-        }
-
-        .cta-button:hover {
+        .btn-ghost:hover {
+            background: rgba(255,255,255,0.15);
+            border-color: rgba(255,255,255,0.35);
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
-        /* Footer */
-        .footer {
-            background: #111;
-            color: white;
-            padding: 3rem 2rem 2rem;
+        /* ─── FOOTER ─── */
+        footer {
+            background: var(--navy-mid);
+            border-top: 1px solid var(--glass-border);
+            padding: 4rem 2rem 2rem;
         }
 
         .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
             max-width: 1200px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid var(--glass-border);
         }
 
-        .footer-col h3 {
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-bottom: 0.5rem;
+        .footer-brand p {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            line-height: 1.7;
+            margin-top: 1rem;
+            max-width: 280px;
         }
 
-        .footer-col h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 2px;
-            background: var(--accent-orange);
+        .footer-socials {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
         }
 
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-links a {
-            color: #ddd;
+        .footer-socials a {
+            width: 38px; height: 38px;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--text-muted);
+            transition: all 0.3s;
             text-decoration: none;
-            transition: all 0.3s ease;
         }
 
-        .footer-links a:hover {
-            color: var(--accent-orange);
-            padding-left: 5px;
+        .footer-socials a:hover {
+            background: rgba(201,168,76,0.2);
+            border-color: rgba(201,168,76,0.4);
+            color: var(--gold);
         }
+
+        .footer-col h4 {
+            font-size: 0.8rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.2rem;
+        }
+
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 0.6rem; }
+        .footer-col ul li a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.88rem;
+            transition: all 0.3s;
+        }
+        .footer-col ul li a:hover { color: var(--gold); padding-left: 4px; }
 
         .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            margin-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            color: var(--text-muted);
+            font-size: 0.82rem;
         }
 
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .back-top {
+            position: fixed;
+            bottom: 2rem; right: 2rem;
+            width: 48px; height: 48px;
+            background: linear-gradient(135deg, var(--gold), #A07830);
+            color: var(--navy);
+            border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            text-decoration: none;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s;
+            font-size: 1rem;
+            z-index: 500;
         }
 
-        /* Responsive Design */
-        @media (max-width: 968px) {
-            .intro-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            .leader-profile {
-                grid-template-columns: 1fr;
-            }
+        .back-top.show { opacity: 1; pointer-events: all; }
+        .back-top:hover { transform: translateY(-4px); }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 1024px) {
+            .values-grid { grid-template-columns: repeat(2, 1fr); }
+            .compliance-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .mv-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 900px) {
+            .story-grid { grid-template-columns: 1fr; }
+            .story-img-main { height: 380px; }
+            .story-float { bottom: -1rem; right: -0.5rem; }
+            .director-card { grid-template-columns: 1fr; gap: 2rem; padding: 2.5rem 2rem; }
+            .director-avatar { width: 160px; height: 160px; font-size: 3.5rem; }
         }
 
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: var(--primary-blue);
-                flex-direction: column;
-                padding: 1rem;
-                gap: 1rem;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            }
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .mv-grid { grid-template-columns: 1fr; }
+            .values-grid { grid-template-columns: 1fr 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            section { padding: 5rem 1.5rem; }
+        }
 
-            .nav-links.active {
-                display: flex;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .page-header h1 {
-                font-size: 2.5rem;
-            }
-            
-            .page-header p {
-                font-size: 1.1rem;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
+        @media (max-width: 480px) {
+            .values-grid { grid-template-columns: 1fr; }
+            .compliance-grid { grid-template-columns: 1fr; }
+            .story-stats { grid-template-columns: 1fr 1fr; }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="nav-container">
-            <a href="index.html" class="logo">
-               <img src="assets/theshulogo.png" alt="Theshu Logo" height="80" length="80"class="logo-img">
-            </a>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="about.html" class="active">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-                <button class="mobile-menu-btn">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </nav>
-        </div>
-    </header>
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <div class="page-header-content">
+    <!-- NAV -->
+     <nav id="mainNav">
+        <a href="#home" class="nav-logo"><img src="assets/TheshuLogo.png" style="height: 44px; width: auto;" alt="Theshu Logo">
+            
+            <div>
+                <div class="nav-logo-text">Theshu</div>
+                <div class="nav-logo-sub">(Pty) Ltd</div>
+            </div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html" class="nav-cta">Get a Quote</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html" class="mob-link">Home</a>
+        <a href="services.html" class="mob-link">Services</a>
+        <a href="about.html" class="mob-link">About</a>
+        <a href="index.html#compliance" class="mob-link">Compliance</a>
+        <a href="index.html#contact" class="mob-link">Contact</a>
+    </div>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+        <div class="page-hero-bg"></div>
+        <div class="page-hero-overlay"></div>
+        <div class="page-hero-content">
             <div class="breadcrumb">
                 <a href="index.html">Home</a>
-                <span>/</span>
-                <a href="about.html">About Us</a>
+                <i class="fas fa-chevron-right"></i>
+                <span style="color:var(--text-muted)">About Us</span>
             </div>
-            <h1>About Theshu (Pty) Ltd</h1>
-            <p>Learn about our story, values, and commitment to excellence</p>
+            <h1>Our Story,<br>Our <em>Purpose</em></h1>
+            <p class="page-hero-sub">Learn about the people, principles, and passion behind Theshu — Northern Cape's premier service enterprise.</p>
         </div>
     </section>
 
-    <!-- About Intro Section -->
-    <section class="about-intro">
-        <div class="container">
-            <div class="intro-content">
-                <div class="intro-text">
-                    <h2>Our Story</h2>
-                    <p>Theshu (Pty) Ltd is a <span class="highlight">100% black female owned</span> private company located in the Tsantsabane area of Postmasburg, Northern Cape. Founded and managed by Mrs. Boitumelo Gladness Shushu, our company brings years of mining industry experience to the service sector.</p>
-                    
-                    <p>Established in December 2020, Theshu has rapidly grown to become a trusted provider of event management, catering, cleaning, and supply services in the region. Our journey began with a vision to create a company that not only delivers exceptional services but also contributes to community development and youth empowerment.</p>
-                    
-                    <p>Today, we take pride in our reputation for reliability, quality, and professionalism. Our commitment to excellence has earned us the trust of clients across various sectors, from private events to government gatherings.</p>
+    <!-- STORY -->
+    <section class="story-section">
+        <div class="story-grid">
+            <div class="story-visual reveal">
+                <div class="story-img-main">
+                    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=80" alt="Theshu Team at Work">
                 </div>
-                <div class="intro-image">
-                    <img src="./assets/blackowned.png" alt="Theshu Team">
+                <div class="story-float">
+                    <strong>2020</strong>
+                    <span>Est. Dec 21st</span>
+                </div>
+            </div>
+            <div class="story-text">
+                <div class="section-tag reveal">Our Story</div>
+                <h2 class="section-heading reveal">From Vision to<br><em>Reality</em></h2>
+                <p class="section-body reveal">Theshu (Pty) Ltd is a <strong style="color:#fff">100% black female owned</strong> private company located in the Tsantsabane area of Postmasburg, Northern Cape. Founded and managed by Mrs. Boitumelo Gladness Shushu, our company brings years of mining industry experience to the service sector.</p>
+                <p class="section-body reveal" style="margin-top:1rem;">Established in December 2020, Theshu rapidly grew into a trusted provider of event management, catering, cleaning, and supply services. Our journey began with a vision to create a company that not only delivers exceptional services but also contributes to community development and youth empowerment.</p>
+                <p class="section-body reveal" style="margin-top:1rem;">Today, we take pride in our reputation for reliability, quality, and professionalism — earning the trust of clients across private events and government gatherings alike.</p>
+                <div class="story-stats">
+                    <div class="story-stat reveal">
+                        <div class="story-stat-num">50+</div>
+                        <div class="story-stat-label">Projects Completed</div>
+                    </div>
+                    <div class="story-stat reveal">
+                        <div class="story-stat-num">100+</div>
+                        <div class="story-stat-label">Satisfied Clients</div>
+                    </div>
+                    <div class="story-stat reveal">
+                        <div class="story-stat-num">3+</div>
+                        <div class="story-stat-label">Years of Service</div>
+                    </div>
+                    <div class="story-stat reveal">
+                        <div class="story-stat-num">6</div>
+                        <div class="story-stat-label">Service Categories</div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="mission-vision">
-        <div class="container">
-            <h2 class="section-title">Our Mission & Vision</h2>
+    <!-- MISSION & VISION -->
+    <section class="mv-section">
+        <div class="mv-section-inner">
+            <div style="text-align:center">
+                <div class="section-tag reveal">What Drives Us</div>
+                <h2 class="section-heading reveal">Mission, Vision<br>& <em>Promise</em></h2>
+            </div>
             <div class="mv-grid">
-                <div class="mv-card">
-                    <div class="mv-icon">
-                        <i class="fas fa-bullseye"></i>
-                    </div>
+                <div class="mv-card reveal">
+                    <div class="mv-icon-wrap"><i class="fas fa-bullseye"></i></div>
                     <h3>Our Mission</h3>
-                    <p>To provide exceptional event management, catering, cleaning, and supply services while empowering unemployed youth within our community through skills development and employment opportunities.</p>
+                    <p>To provide exceptional event management, catering, cleaning, and supply services while empowering unemployed youth through skills development and meaningful employment opportunities.</p>
                 </div>
-                <div class="mv-card">
-                    <div class="mv-icon">
-                        <i class="fas fa-eye"></i>
-                    </div>
+                <div class="mv-card reveal">
+                    <div class="mv-icon-wrap"><i class="fas fa-eye"></i></div>
                     <h3>Our Vision</h3>
-                    <p>To be the leading service provider in the Northern Cape region, recognized for excellence, innovation, and our commitment to social responsibility and community development.</p>
+                    <p>To be the leading service provider in the Northern Cape region — recognised for excellence, innovation, and our unwavering commitment to social responsibility and community development.</p>
                 </div>
-                <div class="mv-card">
-                    <div class="mv-icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
+                <div class="mv-card reveal">
+                    <div class="mv-icon-wrap"><i class="fas fa-handshake"></i></div>
                     <h3>Our Promise</h3>
-                    <p>We are committed to delivering quality services with integrity, professionalism, and attention to detail, ensuring complete client satisfaction with every project we undertake.</p>
+                    <p>We are committed to delivering quality services with integrity, professionalism, and meticulous attention to detail — ensuring complete client satisfaction with every project we undertake.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Leadership Section
-    <section class="leadership">
-        <div class="container">
-            <h2 class="section-title">Our Leadership</h2>
-            <div class="leader-profile">
-                <div class="leader-image">
-                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Mrs. Boitumelo Gladness Shushu">
-                </div>
-                <div class="leader-info">
-                    <h2>Mrs. Boitumelo Gladness Shushu</h2>
-                    <div class="leader-title">General Director & Founder</div>
-                    
-                    <div class="leader-bio">
-                        <p>Mrs. Shushu brings years of valuable experience from the mining industry to the service sector. Her vision and leadership have been instrumental in establishing Theshu (Pty) Ltd as a reputable service provider in the Northern Cape region.</p>
-                        
-                        <p>As a passionate advocate for youth empowerment and female entrepreneurship, Mrs. Shushu is committed to creating opportunities for young people in the community while delivering exceptional services to clients.</p>
-                    </div>
-                    
-                    <ul class="leader-highlights">
-                        <li>Extensive experience in the mining industry</li>
-                        <li>Passionate about youth development and empowerment</li>
-                        <li>Committed to community development initiatives</li>
-                        <li>Advocate for female entrepreneurship</li>
-                        <li>Focus on excellence and quality service delivery</li>
-                    </ul>
-                </div>
+    <!-- VALUES -->
+    <section class="values-section">
+        <div class="values-inner">
+            <div style="text-align:center">
+                <div class="section-tag reveal">What We Stand For</div>
+                <h2 class="section-heading reveal">The Values That<br><em>Define</em> Us</h2>
             </div>
-        </div>
-    </section> -->
-
-    <!-- Values Section -->
-    <section class="values">
-        <div class="container">
-            <h2 class="section-title" style="color: white;">Our Values</h2>
             <div class="values-grid">
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="fas fa-star"></i>
-                    </div>
+                <div class="value-card reveal">
+                    <div class="value-icon-wrap"><i class="fas fa-star"></i></div>
                     <h3>Excellence</h3>
-                    <p>We strive for excellence in everything we do, from service delivery to client interactions.</p>
+                    <p>We strive for excellence in everything we do, from service delivery to every client interaction.</p>
                 </div>
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
+                <div class="value-card reveal">
+                    <div class="value-icon-wrap"><i class="fas fa-users"></i></div>
                     <h3>Community</h3>
-                    <p>We are committed to empowering our community through job creation and skills development.</p>
+                    <p>Committed to empowering our community through job creation and skills development for youth.</p>
                 </div>
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
+                <div class="value-card reveal">
+                    <div class="value-icon-wrap"><i class="fas fa-shield-alt"></i></div>
                     <h3>Integrity</h3>
-                    <p>We conduct our business with honesty, transparency, and ethical practices.</p>
+                    <p>We conduct our business with honesty, transparency, and ethical practices at every level.</p>
                 </div>
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="fas fa-lightbulb"></i>
-                    </div>
+                <div class="value-card reveal">
+                    <div class="value-icon-wrap"><i class="fas fa-lightbulb"></i></div>
                     <h3>Innovation</h3>
-                    <p>We continuously seek innovative solutions to meet our clients' evolving needs.</p>
+                    <p>We continuously seek innovative solutions to meet our clients' evolving and growing needs.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Compliance Section -->
-    <section class="compliance">
-        <div class="container">
-            <h2 class="section-title">Our Compliance</h2>
-            <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem; font-size: 1.1rem;">
-                Theshu (Pty) Ltd maintains full compliance with all regulatory requirements, ensuring we meet the highest standards of business practice.
-            </p>
+    <!-- DIRECTOR -->
+    <section class="director-section">
+        <div class="director-inner">
+            <div style="text-align:center">
+                <div class="section-tag reveal">Our Leadership</div>
+                <h2 class="section-heading reveal">The Face Behind<br><em>Theshu</em></h2>
+            </div>
+            <div class="director-card reveal">
+                <div class="director-avatar-wrap">
+                    <div class="director-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="director-badge">General Director</div>
+                </div>
+                <div class="director-info">
+                    <div class="director-quote">
+                        "Our mission is to deliver excellence, empower communities, and set a standard that young South African women can aspire to surpass."
+                    </div>
+                    <div class="director-name">Mrs. Boitumelo Gladness Shushu</div>
+                    <div class="director-role">Founder & General Director — Theshu (Pty) Ltd</div>
+                    <p class="section-body">With a deep background in the mining industry and an unwavering commitment to service excellence, Mrs. Shushu leads Theshu with vision, integrity, and a passion for community development across the Northern Cape.</p>
+                    <div class="director-highlights">
+                        <div class="dir-highlight"><i class="fas fa-check-circle"></i> Extensive experience in the mining industry</div>
+                        <div class="dir-highlight"><i class="fas fa-check-circle"></i> Passionate advocate for youth development</div>
+                        <div class="dir-highlight"><i class="fas fa-check-circle"></i> Committed to community development initiatives</div>
+                        <div class="dir-highlight"><i class="fas fa-check-circle"></i> Champion of female entrepreneurship in the NC</div>
+                        <div class="dir-highlight"><i class="fas fa-check-circle"></i> Zero Harm safety programme leader</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPLIANCE -->
+    <section class="compliance-section">
+        <div class="compliance-inner">
+            <div style="text-align:center">
+                <div class="section-tag reveal">Credentials & Trust</div>
+                <h2 class="section-heading reveal">Fully Compliant,<br>Fully <em>Accountable</em></h2>
+                <p class="section-body reveal" style="max-width:580px;margin:0 auto 0;">We maintain complete compliance with all South African regulatory requirements, meeting the highest standards of business practice.</p>
+            </div>
             <div class="compliance-grid">
-                <div class="compliance-item">
-                    <div class="compliance-icon">
-                        <i class="fas fa-file-contract"></i>
-                    </div>
+                <div class="compliance-card reveal">
+                    <div class="comp-icon"><i class="fas fa-file-contract"></i></div>
                     <h3>Company Registration</h3>
-                    <p>Fully registered with CIPC (2020/933755/07)</p>
+                    <p>CIPC Registered<br><strong style="color:var(--gold-light)">2020/933755/07</strong></p>
                 </div>
-                <div class="compliance-item">
-                    <div class="compliance-icon">
-                        <i class="fas fa-receipt"></i>
-                    </div>
+                <div class="compliance-card reveal">
+                    <div class="comp-icon"><i class="fas fa-receipt"></i></div>
                     <h3>Tax Compliance</h3>
-                    <p>SARS Compliant (Tax No: 9757094181)</p>
+                    <p>SARS Compliant<br><strong style="color:var(--gold-light)">Tax No: 9757094181</strong></p>
                 </div>
-                <div class="compliance-item">
-                    <div class="compliance-icon">
-                        <i class="fas fa-certificate"></i>
-                    </div>
+                <div class="compliance-card reveal">
+                    <div class="comp-icon"><i class="fas fa-certificate"></i></div>
                     <h3>BEE Status</h3>
-                    <p>Active BEE Compliance</p>
+                    <p>Active BEE Compliance<br><strong style="color:var(--gold-light)">CSD: MAAA1041196</strong></p>
                 </div>
-                <div class="compliance-item">
-                    <div class="compliance-icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
+                <div class="compliance-card reveal">
+                    <div class="comp-icon"><i class="fas fa-handshake"></i></div>
                     <h3>Labor Compliance</h3>
-                    <p>Letter of Good Standing</p>
+                    <p>Department of Labor<br><strong style="color:var(--gold-light)">Letter of Good Standing</strong></p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
+    <!-- CTA -->
     <section class="cta-section">
-        <div class="cta-content">
-            <h2>Partner With Us</h2>
-            <p>Experience the Theshu difference for your next event, project, or supply needs. Contact us today to discuss how we can serve you.</p>
-            <div class="cta-buttons">
-                <a href="contact.html" class="cta-button">Get in Touch</a>
-                <a href="services.html" class="cta-button secondary">Our Services</a>
+        <div class="cta-inner reveal">
+            <div class="section-tag" style="margin-bottom:1.5rem;">Work With Us</div>
+            <h2>Ready to Experience<br>the <em>Theshu Difference?</em></h2>
+            <p>Whether it's your next event, a cleaning contract, or supply needs — we're ready to deliver excellence. Let's start a conversation.</p>
+            <div class="cta-btns">
+                <a href="index.html#contact" class="btn-primary"><span>Get in Touch</span><i class="fas fa-arrow-right"></i></a>
+                <a href="services.html" class="btn-ghost"><i class="fas fa-th-large"></i> Our Services</a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
+    <!-- FOOTER -->
+    <footer>
         <div class="footer-grid">
-            <div class="footer-col">
-                <h3>Theshu (Pty) Ltd</h3>
-                <p>Professional event management, catering, cleaning, and supply services. 100% black female owned enterprise committed to excellence and community empowerment.</p>
+            <div class="footer-brand">
+                <div class="nav-logo" style="text-decoration:none;display:inline-flex;">
+                    <div class="nav-logo-mark">T</div>
+                    <div>
+                        <div class="nav-logo-text">Theshu</div>
+                        <div class="nav-logo-sub">(Pty) Ltd</div>
+                    </div>
+                </div>
+                <p>Professional event management, catering, cleaning & supply services. 100% black female owned enterprise committed to excellence and community empowerment.</p>
+                <div class="footer-socials">
+                    <a href="https://www.facebook.com/share/19hMUSmaN3/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                </div>
             </div>
             <div class="footer-col">
-                <h3>Quick Links</h3>
-                <ul class="footer-links">
+                <h4>Navigation</h4>
+                <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="services.html">Services</a></li>
                     <li><a href="about.html">About Us</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h3>Services</h3>
-                <ul class="footer-links">
+                <h4>Services</h4>
+                <ul>
                     <li><a href="services.html">Event Catering</a></li>
                     <li><a href="services.html">Event Decoration</a></li>
                     <li><a href="services.html">Cleaning Services</a></li>
                     <li><a href="services.html">Supply Services</a></li>
                     <li><a href="services.html">Equipment Rental</a></li>
+                    <li><a href="services.html">Memorial Services</a></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h3>Contact Info</h3>
-                <p><i class="fas fa-phone"></i> 076 309 5296</p>
-                <p><i class="fas fa-envelope"></i> theshubusiness@gmail.com</p>
-                <p><i class="fas fa-map-marker-alt"></i> 4277 Springbok Street, Postmasburg, 8420</p>
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="tel:0763095296">076 309 5296</a></li>
+                    <li><a href="mailto:theshubusiness@gmail.com">theshubusiness@gmail.com</a></li>
+                    <li><a href="index.html#contact">Postmasburg, 8420</a></li>
+                    <li><a href="index.html#contact">Northern Cape, SA</a></li>
+                </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 Theshu (Pty) Ltd. All rights reserved. | Registration: 2020/933755/07</p>
-            <p>Empowering communities through professional services and entrepreneurship</p>
+            <span>&copy; 2024 Theshu (Pty) Ltd. Reg: 2020/933755/07. All rights reserved.</span>
+            <span>Empowering Communities Through Excellence</span>
         </div>
     </footer>
 
+    <a href="#" class="back-top" id="backTop"><i class="fas fa-arrow-up"></i></a>
+
     <script>
-        // Mobile menu toggle
-        const menuBtn = document.querySelector('.mobile-menu-btn');
-        const navLinks = document.querySelector('.nav-links');
-        
-        menuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+        // Nav scroll
+        const nav = document.getElementById('mainNav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 60);
+            document.getElementById('backTop').classList.toggle('show', window.scrollY > 400);
+        });
+        // Trigger on load if already scrolled
+        nav.classList.toggle('scrolled', window.scrollY > 60);
+
+        // Hamburger
+        const ham = document.getElementById('hamburger');
+        const mob = document.getElementById('mobileMenu');
+        ham.addEventListener('click', () => {
+            ham.classList.toggle('open');
+            mob.classList.toggle('open');
+            document.body.style.overflow = mob.classList.contains('open') ? 'hidden' : '';
         });
 
-        // Animate elements on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+        document.querySelectorAll('.mob-link').forEach(l => {
+            l.addEventListener('click', () => {
+                ham.classList.remove('open');
+                mob.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        });
 
-        const observer = new IntersectionObserver((entries) => {
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                const t = document.querySelector(a.getAttribute('href'));
+                if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+            });
+        });
+
+        // Reveal on scroll
+        const revealObs = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
+                    entry.target.classList.add('visible');
+                    revealObs.unobserve(entry.target);
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1 });
 
-        document.querySelectorAll('.mv-card, .value-card, .compliance-item').forEach(item => {
-            item.style.opacity = '0';
-            observer.observe(item);
-        });
+        document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
     </script>
 </body>
 </html>

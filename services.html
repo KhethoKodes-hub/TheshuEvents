@@ -3,661 +3,1075 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Services - Theshu (Pty) Ltd</title>
+    <title>Our Services — Theshu (Pty) Ltd</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" type="image/png" href="assets/TheshuLogo.png">
-
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            overflow-x: hidden;
-            background-color: #f8fafc;
-        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --primary-blue: #1e3a8a;
-            --secondary-blue: #3b82f6;
-            --accent-orange: #f97316;
-            --light-gray: #f8fafc;
-            --dark-gray: #374151;
-            --white: #ffffff;
+            --gold: #C9A84C;
+            --gold-light: #F0D080;
+            --navy: #0B1A33;
+            --navy-mid: #142240;
+            --navy-light: #1E3A6E;
+            --glass: rgba(255,255,255,0.08);
+            --glass-border: rgba(255,255,255,0.15);
+            --text-light: rgba(255,255,255,0.85);
+            --text-muted: rgba(255,255,255,0.55);
         }
 
-        .header {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
-            color: white;
-            padding: 1rem 0;
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--navy);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
             position: fixed;
-            width: 100%;
-            top: 0;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.4;
+        }
+
+        /* ─── NAV ─── */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
             z-index: 1000;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
+            padding: 1.2rem 2rem;
             display: flex;
+            align-items: center;
             justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
+            transition: all 0.4s ease;
         }
 
-        .logo {
+        nav.scrolled {
+            background: rgba(11,26,51,0.88);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 0.8rem 2rem;
+        }
+
+        .nav-logo {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--white);
+            gap: 0.75rem;
             text-decoration: none;
-            transition: transform 0.3s ease;
         }
 
-       
+        .nav-logo-mark {
+            width: 44px; height: 44px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 1.3rem;
+            color: var(--navy);
+            flex-shrink: 0;
+        }
 
-        .logo:hover {
-            transform: scale(1.05);
+        .nav-logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.1;
+        }
+
+        .nav-logo-sub {
+            font-size: 0.65rem;
+            color: var(--gold);
+            font-family: 'DM Sans', sans-serif;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
         }
 
         .nav-links {
             display: flex;
+            gap: 2.5rem;
             list-style: none;
-            gap: 2rem;
         }
 
         .nav-links a {
-            color: white;
+            color: var(--text-light);
             text-decoration: none;
-            transition: all 0.3s ease;
-            position: relative;
+            font-size: 0.9rem;
             font-weight: 500;
+            letter-spacing: 0.05em;
+            position: relative;
+            transition: color 0.3s;
         }
 
         .nav-links a::after {
             content: '';
             position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: var(--accent-orange);
+            bottom: -4px; left: 0;
+            width: 0; height: 1.5px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
             transition: width 0.3s ease;
         }
 
-        .nav-links a:hover::after {
-            width: 100%;
+        .nav-links a:hover,
+        .nav-links a.active { color: var(--gold-light); }
+        .nav-links a:hover::after,
+        .nav-links a.active::after { width: 100%; }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--gold), #A07830);
+            color: var(--navy) !important;
+            padding: 0.5rem 1.4rem;
+            border-radius: 50px;
+            font-weight: 600 !important;
         }
 
-        .mobile-menu-btn {
+        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(201,168,76,0.4); }
+
+        .hamburger {
             display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
+            flex-direction: column;
+            gap: 5px;
             cursor: pointer;
+            padding: 6px;
+            z-index: 1001;
         }
 
-        /* Page Header */
-        .page-header {
-            background: linear-gradient(rgba(30, 58, 138, 0.8), rgba(30, 58, 138, 0.8)), url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+        .hamburger span {
+            display: block;
+            width: 26px; height: 2px;
+            background: #fff;
+            border-radius: 2px;
+            transition: all 0.35s ease;
+            transform-origin: center;
+        }
+
+        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(11,26,51,0.97);
+            backdrop-filter: blur(20px);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2.5rem;
+        }
+
+        .mobile-menu.open { display: flex; }
+        .mobile-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+        .mobile-menu a:hover { color: var(--gold); }
+
+        /* ─── PAGE HERO ─── */
+        .page-hero {
+            position: relative;
+            min-height: 65vh;
+            display: flex;
+            align-items: flex-end;
+            padding-bottom: 5rem;
+            overflow: hidden;
+        }
+
+        .page-hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1600&q=80');
             background-size: cover;
             background-position: center;
-            color: white;
-            padding: 8rem 2rem 4rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            margin-top: 68px;
+            animation: kenburns 16s ease-in-out infinite alternate;
         }
 
-        .page-header::before {
+        @keyframes kenburns {
+            from { transform: scale(1); }
+            to { transform: scale(1.06); }
+        }
+
+        .page-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(11,26,51,0.5) 0%,
+                rgba(11,26,51,0.75) 55%,
+                rgba(11,26,51,1) 100%
+            );
+        }
+
+        .page-hero-overlay::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grain)"/></svg>');
-            opacity: 0.3;
+            inset: 0;
+            background: radial-gradient(ellipse at 75% 25%, rgba(201,168,76,0.12) 0%, transparent 60%);
         }
 
-        .page-header-content {
-            max-width: 800px;
-            margin: 0 auto;
+        .page-hero-content {
             position: relative;
             z-index: 2;
-        }
-
-        .page-header h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease;
-        }
-
-        .page-header p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            animation: fadeInUp 1s ease 0.2s both;
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 2rem;
         }
 
         .breadcrumb {
             display: flex;
-            justify-content: center;
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease 0.4s both;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.82rem;
+            color: var(--text-muted);
         }
 
         .breadcrumb a {
-            color: var(--accent-orange);
+            color: var(--gold);
             text-decoration: none;
+            transition: color 0.3s;
+        }
+        .breadcrumb a:hover { color: var(--gold-light); }
+        .breadcrumb i { font-size: 0.6rem; }
+
+        .page-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.8rem, 6vw, 5.5rem);
+            font-weight: 900;
+            line-height: 1.05;
+            margin-bottom: 1.2rem;
         }
 
-        .breadcrumb span {
-            margin: 0 0.5rem;
-            color: #ddd;
+        .page-hero h1 em {
+            font-style: italic;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        /* Services Section */
-        .services {
-            padding: 4rem 2rem;
+        .page-hero-sub {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 540px;
+            line-height: 1.7;
         }
 
-        .container {
+        /* ─── SHARED ─── */
+        .section-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(201,168,76,0.2), rgba(240,208,128,0.1));
+            border: 1px solid rgba(201,168,76,0.3);
+            color: var(--gold);
+            font-size: 0.75rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            margin-bottom: 1.2rem;
+        }
+
+        .section-heading {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4.5vw, 3rem);
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 1.2rem;
+        }
+
+        .section-heading em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .section-body {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* ─── SERVICE CARDS ─── */
+        .services-section {
+            padding: 7rem 2rem;
+            background: var(--navy-mid);
+        }
+
+        .services-inner {
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .section-title {
+        .services-intro {
             text-align: center;
-            font-size: 2.5rem;
-            color: var(--primary-blue);
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: var(--accent-orange);
-            border-radius: 2px;
+            max-width: 680px;
+            margin: 0 auto 5rem;
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
-            margin-top: 2rem;
         }
 
         .service-card {
-            background: white;
-            border-radius: 15px;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(16px);
+            border-radius: 24px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: all 0.4s ease;
+            transition: all 0.45s ease;
+            display: flex;
+            flex-direction: column;
             position: relative;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+            z-index: 2;
         }
 
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            border-color: rgba(201,168,76,0.35);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
         }
 
-        .service-image {
-            height: 200px;
-            background-size: cover;
-            background-position: center;
+        .service-card:hover::before { transform: scaleX(1); }
+
+        .service-img {
             position: relative;
+            height: 210px;
+            overflow: hidden;
         }
 
-        .service-image::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 50%;
-            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+        .service-img img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+            display: block;
         }
 
-        .service-icon {
+        .service-card:hover .service-img img { transform: scale(1.08); }
+
+        .service-img-overlay {
             position: absolute;
-            bottom: -30px;
-            left: 30px;
-            width: 60px;
-            height: 60px;
-            background: var(--accent-orange);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 40%, rgba(11,26,51,0.85) 100%);
+        }
+
+        .service-img-icon {
+            position: absolute;
+            bottom: -22px;
+            left: 1.8rem;
+            width: 50px; height: 50px;
+            background: linear-gradient(135deg, var(--gold), #A07830);
+            border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--navy);
+            font-size: 1.2rem;
             z-index: 3;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 25px rgba(201,168,76,0.4);
+            transition: transform 0.3s ease;
         }
 
-        .service-content {
-            padding: 2.5rem 1.5rem 1.5rem;
+        .service-card:hover .service-img-icon { transform: rotate(8deg) scale(1.1); }
+
+        .service-body {
+            padding: 2.2rem 1.8rem 1.8rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
 
-        .service-content h3 {
-            color: var(--primary-blue);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
+        .service-body h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            margin-top: 0.5rem;
         }
 
-        .service-content p {
-            color: var(--dark-gray);
+        .service-body > p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.7;
             margin-bottom: 1.5rem;
-            line-height: 1.6;
         }
 
         .service-features {
             list-style: none;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.8rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.45rem;
         }
 
         .service-features li {
-            padding: 0.5rem 0;
-            position: relative;
-            padding-left: 1.5rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
         }
 
         .service-features li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--accent-orange);
-            font-weight: bold;
+            content: '';
+            width: 5px; height: 5px;
+            border-radius: 50%;
+            background: var(--gold);
+            flex-shrink: 0;
         }
 
-        .service-cta {
-            display: inline-block;
-            background: var(--primary-blue);
-            color: white;
-            padding: 0.8rem 1.5rem;
+        .service-cta-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, var(--gold), #A07830);
+            color: var(--navy);
+            padding: 0.75rem 1.5rem;
             border-radius: 50px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
+            font-size: 0.85rem;
             transition: all 0.3s ease;
+            align-self: flex-start;
+            margin-top: auto;
+            position: relative;
+            overflow: hidden;
         }
 
-        .service-cta:hover {
-            background: var(--accent-orange);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        .service-cta-link::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            opacity: 0;
+            transition: opacity 0.3s;
         }
 
-        /* Process Section */
-        .process {
-            padding: 4rem 2rem;
-            background: linear-gradient(135deg, var(--light-gray) 0%, white 100%);
+        .service-cta-link:hover::before { opacity: 1; }
+        .service-cta-link:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(201,168,76,0.35); }
+        .service-cta-link span, .service-cta-link i { position: relative; z-index: 1; }
+
+        /* ─── PROCESS ─── */
+        .process-section {
+            padding: 7rem 2rem;
+            background: linear-gradient(135deg, var(--navy-light), var(--navy-mid));
+            position: relative;
+            overflow: hidden;
         }
 
-        .process-steps {
+        .process-section::before {
+            content: '';
+            position: absolute;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%);
+            bottom: -200px; left: -150px;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .process-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .process-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            margin-top: 4rem;
+            position: relative;
+        }
+
+        /* Connecting line */
+        .process-grid::before {
+            content: '';
+            position: absolute;
+            top: 52px;
+            left: calc(12.5% + 1.5rem);
+            right: calc(12.5% + 1.5rem);
+            height: 1px;
+            background: linear-gradient(90deg, var(--gold), rgba(201,168,76,0.2), var(--gold), rgba(201,168,76,0.2));
+            z-index: 0;
         }
 
         .process-step {
             text-align: center;
-            padding: 2rem;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
+            padding: 0 1.5rem 2rem;
             position: relative;
+            z-index: 1;
         }
 
-        .process-step:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-
-        .step-number {
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40px;
-            height: 40px;
-            background: var(--accent-orange);
-            color: white;
+        .step-bubble {
+            width: 72px; height: 72px;
+            background: linear-gradient(135deg, var(--gold), #A07830);
             border-radius: 50%;
+            margin: 0 auto 1.8rem;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
-            font-size: 1.2rem;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(201,168,76,0.35);
+            transition: all 0.4s ease;
+        }
+
+        .process-step:hover .step-bubble {
+            transform: scale(1.1);
+            box-shadow: 0 18px 45px rgba(201,168,76,0.45);
+        }
+
+        .step-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.75rem;
+            font-weight: 900;
+            color: rgba(11,26,51,0.6);
+            line-height: 1;
         }
 
         .step-icon {
-            font-size: 2.5rem;
-            color: var(--primary-blue);
-            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            color: var(--navy);
+            line-height: 1;
         }
 
-        .step-title {
-            color: var(--primary-blue);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
+        .process-step h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
         }
 
-        /* CTA Section */
-        .cta-section {
-            padding: 4rem 2rem;
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
-            color: white;
+        .process-step p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        /* ─── WHY US ─── */
+        .why-section {
+            padding: 7rem 2rem;
+            background: var(--navy);
+        }
+
+        .why-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .why-visual {
+            position: relative;
+        }
+
+        .why-img-wrap {
+            border-radius: 24px;
+            overflow: hidden;
+            height: 500px;
+        }
+
+        .why-img-wrap img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .why-img-wrap:hover img { transform: scale(1.04); }
+
+        .why-img-wrap::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom right, rgba(201,168,76,0.15), transparent);
+            z-index: 1;
+            pointer-events: none;
+            border-radius: 24px;
+        }
+
+        .why-float-card {
+            position: absolute;
+            bottom: -1.5rem;
+            right: -1.5rem;
+            background: linear-gradient(135deg, var(--gold), #A07830);
+            border-radius: 20px;
+            padding: 1.5rem 1.8rem;
+            color: var(--navy);
+            z-index: 2;
+            box-shadow: 0 20px 50px rgba(201,168,76,0.4);
             text-align: center;
         }
 
-        .cta-content {
+        .why-float-card strong {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            display: block;
+            line-height: 1;
+        }
+
+        .why-float-card span {
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        .why-reasons {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 2.5rem;
+        }
+
+        .why-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.2rem;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 1.3rem 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .why-item:hover {
+            background: rgba(201,168,76,0.1);
+            border-color: rgba(201,168,76,0.3);
+            transform: translateX(6px);
+        }
+
+        .why-item-icon {
+            width: 42px; height: 42px;
+            background: linear-gradient(135deg, rgba(201,168,76,0.3), rgba(201,168,76,0.08));
+            border-radius: 12px;
+            flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--gold);
+            font-size: 1rem;
+        }
+
+        .why-item h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.2rem; }
+        .why-item p { font-size: 0.82rem; color: var(--text-muted); }
+
+        /* ─── CTA ─── */
+        .cta-section {
+            padding: 7rem 2rem;
+            background: linear-gradient(135deg, var(--navy-mid), var(--navy-light));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .cta-inner {
             max-width: 800px;
             margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
         }
 
-        .cta-content h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
+        .cta-inner h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4.5vw, 3.2rem);
+            font-weight: 900;
+            margin-bottom: 1.2rem;
+            line-height: 1.15;
         }
 
-        .cta-content p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
+        .cta-inner h2 em {
+            font-style: italic;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .cta-buttons {
+        .cta-inner p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.75;
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-btns {
             display: flex;
             gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
         }
 
-        .cta-button {
-            display: inline-block;
-            background: var(--accent-orange);
-            color: white;
-            padding: 1rem 2rem;
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: linear-gradient(135deg, var(--gold), #A07830);
+            color: var(--navy);
+            padding: 1rem 2.2rem;
             border-radius: 50px;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .btn-primary:hover::before { opacity: 1; }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(201,168,76,0.4); }
+        .btn-primary span, .btn-primary i { position: relative; z-index: 1; }
+
+        .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(12px);
+            color: #fff;
+            padding: 1rem 2.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
             transition: all 0.3s ease;
         }
 
-        .cta-button.secondary {
-            background: transparent;
-            border: 2px solid white;
-        }
-
-        .cta-button:hover {
+        .btn-ghost:hover {
+            background: rgba(255,255,255,0.15);
+            border-color: rgba(255,255,255,0.35);
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
-        /* Footer */
-        .footer {
-            background: #111;
-            color: white;
-            padding: 3rem 2rem 2rem;
+        /* ─── FOOTER ─── */
+        footer {
+            background: var(--navy-mid);
+            border-top: 1px solid var(--glass-border);
+            padding: 4rem 2rem 2rem;
         }
 
         .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
             max-width: 1200px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid var(--glass-border);
         }
 
-        .footer-col h3 {
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-bottom: 0.5rem;
+        .footer-brand p {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            line-height: 1.7;
+            margin-top: 1rem;
+            max-width: 280px;
         }
 
-        .footer-col h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 2px;
-            background: var(--accent-orange);
+        .footer-socials {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
         }
 
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-links a {
-            color: #ddd;
+        .footer-socials a {
+            width: 38px; height: 38px;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--text-muted);
+            transition: all 0.3s;
             text-decoration: none;
-            transition: all 0.3s ease;
         }
 
-        .footer-links a:hover {
-            color: var(--accent-orange);
-            padding-left: 5px;
+        .footer-socials a:hover {
+            background: rgba(201,168,76,0.2);
+            border-color: rgba(201,168,76,0.4);
+            color: var(--gold);
         }
+
+        .footer-col h4 {
+            font-size: 0.8rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.2rem;
+        }
+
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 0.6rem; }
+        .footer-col ul li a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.88rem;
+            transition: all 0.3s;
+        }
+        .footer-col ul li a:hover { color: var(--gold); padding-left: 4px; }
 
         .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            margin-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            color: var(--text-muted);
+            font-size: 0.82rem;
         }
 
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .back-top {
+            position: fixed;
+            bottom: 2rem; right: 2rem;
+            width: 48px; height: 48px;
+            background: linear-gradient(135deg, var(--gold), #A07830);
+            color: var(--navy);
+            border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            text-decoration: none;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s;
+            font-size: 1rem;
+            z-index: 500;
         }
 
-        /* Responsive Design */
+        .back-top.show { opacity: 1; pointer-events: all; }
+        .back-top:hover { transform: translateY(-4px); }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 1024px) {
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .process-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+            .process-grid::before { display: none; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 900px) {
+            .why-inner { grid-template-columns: 1fr; }
+            .why-img-wrap { height: 360px; }
+            .why-float-card { bottom: -1rem; right: -0.5rem; }
+        }
+
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: var(--primary-blue);
-                flex-direction: column;
-                padding: 1rem;
-                gap: 1rem;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            }
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .services-grid { grid-template-columns: 1fr; }
+            .process-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            section, .services-section, .process-section, .why-section, .cta-section { padding: 5rem 1.5rem; }
+        }
 
-            .nav-links.active {
-                display: flex;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .page-header h1 {
-                font-size: 2.5rem;
-            }
-            
-            .page-header p {
-                font-size: 1.1rem;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
+        @media (max-width: 480px) {
+            .service-features { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="nav-container">
-            <a href="index.html" class="logo">
-               <img src="assets/theshulogo.png" alt="Theshu Logo" height="80" length="80"class="logo-img">
-            </a>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="services.html" class="active">Services</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-                <button class="mobile-menu-btn">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </nav>
-        </div>
-    </header>
 
-    <section class="page-header">
-        <div class="page-header-content">
+    <!-- NAV -->
+    <nav id="mainNav">
+        <a href="#home" class="nav-logo"><img src="assets/TheshuLogo.png" style="height: 44px; width: auto;" alt="Theshu Logo">
+            
+            <div>
+                <div class="nav-logo-text">Theshu</div>
+                <div class="nav-logo-sub">(Pty) Ltd</div>
+            </div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html" class="mob-link">Home</a>
+        <a href="services.html" class="mob-link">Services</a>
+        <a href="about.html" class="mob-link">About</a>
+        <a href="index.html#compliance" class="mob-link">Compliance</a>
+        <a href="index.html#contact" class="mob-link">Contact</a>
+    </div>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+        <div class="page-hero-bg"></div>
+        <div class="page-hero-overlay"></div>
+        <div class="page-hero-content">
             <div class="breadcrumb">
                 <a href="index.html">Home</a>
-                <span>/</span>
-                <a href="services.html">Services</a>
+                <i class="fas fa-chevron-right"></i>
+                <span style="color:var(--text-muted)">Our Services</span>
             </div>
-            <h1>Our Services</h1>
-            <p>Comprehensive solutions for all your event, catering, cleaning and supply needs</p>
+            <h1>Premium Services,<br><em>Flawlessly</em> Delivered</h1>
+            <p class="page-hero-sub">Comprehensive event, catering, cleaning & supply solutions — crafted with precision and delivered with heart.</p>
         </div>
     </section>
 
-    <section class="services">
-        <div class="container">
-            <h2 class="section-title">What We Offer</h2>
-            <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem; font-size: 1.1rem;">
-                Theshu (Pty) Ltd provides a wide range of professional services tailored to meet your specific needs. 
-                From event management to general supplies, we deliver quality and excellence in everything we do.
-            </p>
+    <!-- SERVICES GRID -->
+    <section class="services-section">
+        <div class="services-inner">
+            <div class="services-intro">
+                <div class="section-tag reveal">What We Offer</div>
+                <h2 class="section-heading reveal">Six Ways We<br>Serve <em>You</em></h2>
+                <p class="section-body reveal">From intimate celebrations to large-scale government gatherings — Theshu delivers quality, compliance, and care across every service category.</p>
+            </div>
 
             <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1555244162-803834f70033?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');">
-                        <div class="service-icon">
-                            <i class="fas fa-utensils"></i>
-                        </div>
+
+                <!-- Catering -->
+                <div class="service-card reveal">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=700&q=80" alt="Event Catering">
+                        <div class="service-img-overlay"></div>
+                        <div class="service-img-icon"><i class="fas fa-utensils"></i></div>
                     </div>
-                    <div class="service-content">
+                    <div class="service-body">
                         <h3>Event Catering</h3>
-                        <p>Professional catering services for all types of events, from intimate gatherings to large corporate functions.</p>
+                        <p>Professional catering for all occasions — from intimate gatherings to large-scale government functions, expertly prepared and beautifully presented.</p>
                         <ul class="service-features">
-                            <li>Weddings & Special Occasions</li>
+                            <li>Weddings & Celebrations</li>
                             <li>Corporate Events</li>
                             <li>Birthday Parties</li>
                             <li>Funeral Services</li>
                             <li>Government Gatherings</li>
                             <li>Custom Menu Planning</li>
                         </ul>
-                        <a href="#contact" class="service-cta">Request Catering</a>
+                        <a href="index.html#contact" class="service-cta-link"><span>Request Catering</span><i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
-                <!-- Decorations Service -->
-                <div class="service-card">
-                    <div class="service-image" style="background-image: url('./assets/decoration.png');">
-                        <div class="service-icon">
-                            <i class="fas fa-palette"></i>
-                        </div>
+                <!-- Decoration -->
+                <div class="service-card reveal">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=700&q=80" alt="Event Decoration">
+                        <div class="service-img-overlay"></div>
+                        <div class="service-img-icon"><i class="fas fa-palette"></i></div>
                     </div>
-                    <div class="service-content">
+                    <div class="service-body">
                         <h3>Event Decoration</h3>
-                        <p>Transform your venue with our creative and professional decoration services for any occasion.</p>
+                        <p>Transform your venue into a breathtaking space — we craft immersive environments that set the perfect tone for any occasion.</p>
                         <ul class="service-features">
                             <li>Theme Development</li>
                             <li>Venue Transformation</li>
-                            <li>Custom Decor Elements</li>
+                            <li>Custom Décor Elements</li>
                             <li>Floral Arrangements</li>
-                            <li>Backdrops & Photo Areas</li>
-                            <li>Complete Setup & Teardown</li>
+                            <li>Photo Backdrops</li>
+                            <li>Setup & Teardown</li>
                         </ul>
-                        <a href="#contact" class="service-cta">Discuss Decor</a>
+                        <a href="index.html#contact" class="service-cta-link"><span>Discuss Décor</span><i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
-                <!-- Cleaning Service -->
-                <div class="service-card">
-                    <div class="service-image" style="background-image: url('./assets/cleaningservice.png');">
-                        <div class="service-icon">
-                            <i class="fas fa-broom"></i>
-                        </div>
+                <!-- Cleaning -->
+                <div class="service-card reveal">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=700&q=80" alt="Cleaning Services">
+                        <div class="service-img-overlay"></div>
+                        <div class="service-img-icon"><i class="fas fa-broom"></i></div>
                     </div>
-                    <div class="service-content">
+                    <div class="service-body">
                         <h3>Cleaning Services</h3>
-                        <p>Comprehensive cleaning solutions for residential, commercial, and industrial properties.</p>
+                        <p>Comprehensive cleaning solutions for residential, commercial, and industrial properties — spotless results, every time.</p>
                         <ul class="service-features">
                             <li>Residential Cleaning</li>
                             <li>Commercial Spaces</li>
                             <li>Industrial Facilities</li>
                             <li>Disinfection Services</li>
-                            <li>Post-Construction Cleanup</li>
-                            <li>Regular Maintenance Plans</li>
+                            <li>Post-Construction</li>
+                            <li>Maintenance Plans</li>
                         </ul>
-                        <a href="#contact" class="service-cta">Get a Quote</a>
+                        <a href="index.html#contact" class="service-cta-link"><span>Get a Quote</span><i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
-                <div class="service-card">
-                    <div class="service-image" style="background-image: url('./assets/supply.png');">
-                        <div class="service-icon">
-                            <i class="fas fa-truck-loading"></i>
-                        </div>
+                <!-- Supply -->
+                <div class="service-card reveal">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?w=700&q=80" alt="General Supply">
+                        <div class="service-img-overlay"></div>
+                        <div class="service-img-icon"><i class="fas fa-boxes"></i></div>
                     </div>
-                    <div class="service-content">
+                    <div class="service-body">
                         <h3>General Supply</h3>
-                        <p>Reliable supply of quality products for offices, events, and everyday needs.</p>
+                        <p>Reliable supply of quality products for offices, events, and everyday operational needs — delivered with consistency.</p>
                         <ul class="service-features">
                             <li>Cleaning Materials</li>
                             <li>Office Stationery</li>
                             <li>Food Parcels</li>
                             <li>Office Furniture</li>
                             <li>Equipment & Tools</li>
-                            <li>Custom Supply Solutions</li>
+                            <li>Custom Solutions</li>
                         </ul>
-                        <a href="#contact" class="service-cta">Inquire About Supplies</a>
+                        <a href="index.html#contact" class="service-cta-link"><span>Inquire Now</span><i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
-                <div class="service-card">
-                    <div class="service-image" style="background-image: url('./assets/tentchair.png');">
-                        <div class="service-icon">
-                            <i class="fas fa-tents"></i>
-                        </div>
+                <!-- Tent Rental -->
+                <div class="service-card reveal">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1478146059778-26b9d8681843?w=700&q=80" alt="Tent & Equipment Rental">
+                        <div class="service-img-overlay"></div>
+                        <div class="service-img-icon"><i class="fas fa-campground"></i></div>
                     </div>
-                    <div class="service-content">
+                    <div class="service-body">
                         <h3>Tent & Equipment Rental</h3>
-                        <p>Complete event infrastructure solutions for outdoor and indoor events of all sizes.</p>
+                        <p>Complete event infrastructure for outdoor and indoor events of all sizes — we handle setup and breakdown so you don't have to.</p>
                         <ul class="service-features">
                             <li>Various Tent Sizes</li>
                             <li>Chairs & Tables</li>
@@ -666,160 +1080,243 @@
                             <li>Setup & Breakdown</li>
                             <li>Delivery Services</li>
                         </ul>
-                        <a href="#contact" class="service-cta">Check Availability</a>
+                        <a href="index.html#contact" class="service-cta-link"><span>Check Availability</span><i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
-                <div class="service-card">
-                    <div class="service-image" style="background-image: url('./assets/memorial.png');">
-                        <div class="service-icon">
-                            <i class="fas fa-monument"></i>
-                        </div>
+                <!-- Memorial -->
+                <div class="service-card reveal">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=700&q=80" alt="Memorial Services">
+                        <div class="service-img-overlay"></div>
+                        <div class="service-img-icon"><i class="fas fa-monument"></i></div>
                     </div>
-                    <div class="service-content">
+                    <div class="service-body">
                         <h3>Memorial Services</h3>
-                        <p>Compassionate and professional services to honor and celebrate the lives of loved ones.</p>
+                        <p>Compassionate, professional services to honour and celebrate the lives of loved ones — handled with care and dignity.</p>
                         <ul class="service-features">
-                            <li>Tombstone Supply & Installation</li>
-                            <li>Memorial Decorations</li>
+                            <li>Tombstone Supply</li>
+                            <li>Memorial Décor</li>
                             <li>Funeral Catering</li>
                             <li>Venue Setup</li>
-                            <li>Complete Memorial Packages</li>
+                            <li>Complete Packages</li>
                             <li>Compassionate Support</li>
                         </ul>
-                        <a href="#contact" class="service-cta">Get Assistance</a>
+                        <a href="index.html#contact" class="service-cta-link"><span>Get Assistance</span><i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="process-section">
+        <div class="process-inner">
+            <div style="text-align:center">
+                <div class="section-tag reveal">How It Works</div>
+                <h2 class="section-heading reveal">Our Simple<br><em>4-Step</em> Process</h2>
+                <p class="section-body reveal" style="max-width:560px;margin:0 auto;">We follow a structured, transparent approach to ensure we deliver exactly what you need — on time and beyond expectations.</p>
+            </div>
+            <div class="process-grid">
+                <div class="process-step reveal">
+                    <div class="step-bubble">
+                        <div class="step-num">01</div>
+                        <div class="step-icon"><i class="fas fa-comments"></i></div>
+                    </div>
+                    <h3>Consultation</h3>
+                    <p>We begin by understanding your specific needs, preferences, and budget to build a solution tailored just for you.</p>
+                </div>
+                <div class="process-step reveal">
+                    <div class="step-bubble">
+                        <div class="step-num">02</div>
+                        <div class="step-icon"><i class="fas fa-clipboard-list"></i></div>
+                    </div>
+                    <h3>Planning</h3>
+                    <p>Our team develops a detailed plan outlining every aspect of the service, timelines, and all requirements.</p>
+                </div>
+                <div class="process-step reveal">
+                    <div class="step-bubble">
+                        <div class="step-num">03</div>
+                        <div class="step-icon"><i class="fas fa-file-signature"></i></div>
+                    </div>
+                    <h3>Agreement</h3>
+                    <p>We present a transparent proposal with clear pricing and terms for your review and approval.</p>
+                </div>
+                <div class="process-step reveal">
+                    <div class="step-bubble">
+                        <div class="step-num">04</div>
+                        <div class="step-icon"><i class="fas fa-star"></i></div>
+                    </div>
+                    <h3>Excellence</h3>
+                    <p>Our skilled team delivers with meticulous attention to detail, quality, and genuine professionalism.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE US -->
+    <section class="why-section">
+        <div class="why-inner">
+            <div class="why-visual reveal">
+                <div class="why-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&q=80" alt="Event Setup">
+                </div>
+                <div class="why-float-card">
+                    <strong>100%</strong>
+                    <span>Client<br>Satisfaction</span>
+                </div>
+            </div>
+            <div class="why-text">
+                <div class="section-tag reveal">Why Theshu</div>
+                <h2 class="section-heading reveal">The Difference<br>Is in the <em>Details</em></h2>
+                <p class="section-body reveal">We don't just provide services — we build partnerships, deliver experiences, and create moments that last a lifetime.</p>
+                <div class="why-reasons">
+                    <div class="why-item reveal">
+                        <div class="why-item-icon"><i class="fas fa-shield-alt"></i></div>
+                        <div>
+                            <h4>Fully Compliant & Registered</h4>
+                            <p>CIPC, SARS, BEE and Labour compliant — complete peace of mind for corporate and government clients.</p>
+                        </div>
+                    </div>
+                    <div class="why-item reveal">
+                        <div class="why-item-icon"><i class="fas fa-users"></i></div>
+                        <div>
+                            <h4>Community-Driven Employment</h4>
+                            <p>We actively hire and develop local youth, ensuring your business supports community growth.</p>
+                        </div>
+                    </div>
+                    <div class="why-item reveal">
+                        <div class="why-item-icon"><i class="fas fa-award"></i></div>
+                        <div>
+                            <h4>100% Black Female Owned</h4>
+                            <p>Proudly BBBEE compliant — partnering with Theshu supports transformation in South Africa.</p>
+                        </div>
+                    </div>
+                    <div class="why-item reveal">
+                        <div class="why-item-icon"><i class="fas fa-clock"></i></div>
+                        <div>
+                            <h4>Reliable & On-Time Delivery</h4>
+                            <p>We understand how critical timing is — our team is committed to punctuality and precision every time.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Process Section -->
-    <section class="process">
-        <div class="container">
-            <h2 class="section-title">Our Process</h2>
-            <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem; font-size: 1.1rem;">
-                We follow a structured approach to ensure we deliver exceptional service that meets your exact requirements and exceeds expectations.
-            </p>
-
-            <div class="process-steps">
-                <div class="process-step">
-                    <div class="step-number">1</div>
-                    <div class="step-icon">
-                        <i class="fas fa-comments"></i>
-                    </div>
-                    <h3 class="step-title">Consultation</h3>
-                    <p>We begin by understanding your specific needs, preferences, and budget to create a tailored solution.</p>
-                </div>
-
-                <div class="process-step">
-                    <div class="step-number">2</div>
-                    <div class="step-icon">
-                        <i class="fas fa-clipboard-list"></i>
-                    </div>
-                    <h3 class="step-title">Planning</h3>
-                    <p>Our team develops a detailed plan outlining all aspects of the service, timeline, and requirements.</p>
-                </div>
-
-                <div class="process-step">
-                    <div class="step-number">3</div>
-                    <div class="step-icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                    <h3 class="step-title">Agreement</h3>
-                    <p>We present a transparent proposal with clear pricing and terms for your approval.</p>
-                </div>
-
-                <div class="process-step">
-                    <div class="step-number">4</div>
-                    <div class="step-icon">
-                        <i class="fas fa-tasks"></i>
-                    </div>
-                    <h3 class="step-title">Execution</h3>
-                    <p>Our skilled team delivers the service with attention to detail, quality, and professionalism.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
+    <!-- CTA -->
     <section class="cta-section">
-        <div class="cta-content">
-            <h2>Ready to Get Started?</h2>
-            <p>Contact us today to discuss your needs and let us provide you with exceptional service that exceeds your expectations.</p>
-            <div class="cta-buttons">
-                <a href="contact.html" class="cta-button">Get in Touch</a>
-                <a href="tel:0763095296" class="cta-button secondary">Call Now</a>
+        <div class="cta-inner reveal">
+            <div class="section-tag" style="margin-bottom:1.5rem;">Let's Begin</div>
+            <h2>Ready to Get<br><em>Started?</em></h2>
+            <p>Contact us today to discuss your needs. Whether it's a grand event or a routine supply order — we're here to deliver with excellence.</p>
+            <div class="cta-btns">
+                <a href="index.html#contact" class="btn-primary"><span>Get in Touch</span><i class="fas fa-arrow-right"></i></a>
+                <a href="tel:0763095296" class="btn-ghost"><i class="fas fa-phone"></i> Call Us Now</a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
+    <!-- FOOTER -->
+    <footer>
         <div class="footer-grid">
-            <div class="footer-col">
-                <h3>Theshu (Pty) Ltd</h3>
-                <p>Professional event management, catering, cleaning, and supply services. 100% black female owned enterprise committed to excellence and community empowerment.</p>
+            <div class="footer-brand">
+                <div class="nav-logo" style="text-decoration:none;display:inline-flex;">
+                    <div class="nav-logo-mark">T</div>
+                    <div>
+                        <div class="nav-logo-text">Theshu</div>
+                        <div class="nav-logo-sub">(Pty) Ltd</div>
+                    </div>
+                </div>
+                <p>Professional event management, catering, cleaning & supply services. 100% black female owned enterprise committed to excellence and community empowerment.</p>
+                <div class="footer-socials">
+                    <a href="https://www.facebook.com/share/19hMUSmaN3/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                </div>
             </div>
             <div class="footer-col">
-                <h3>Quick Links</h3>
-                <ul class="footer-links">
+                <h4>Navigation</h4>
+                <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="services.html">Services</a></li>
                     <li><a href="about.html">About Us</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h3>Services</h3>
-                <ul class="footer-links">
+                <h4>Services</h4>
+                <ul>
                     <li><a href="services.html">Event Catering</a></li>
                     <li><a href="services.html">Event Decoration</a></li>
                     <li><a href="services.html">Cleaning Services</a></li>
                     <li><a href="services.html">Supply Services</a></li>
                     <li><a href="services.html">Equipment Rental</a></li>
+                    <li><a href="services.html">Memorial Services</a></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h3>Contact Info</h3>
-                <p><i class="fas fa-phone"></i> 076 309 5296</p>
-                <p><i class="fas fa-envelope"></i> theshubusiness@gmail.com</p>
-                <p><i class="fas fa-map-marker-alt"></i> 4277 Springbok Street, Postmasburg, 8420</p>
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="tel:0763095296">076 309 5296</a></li>
+                    <li><a href="mailto:theshubusiness@gmail.com">theshubusiness@gmail.com</a></li>
+                    <li><a href="index.html#contact">Postmasburg, 8420</a></li>
+                    <li><a href="index.html#contact">Northern Cape, SA</a></li>
+                </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 Theshu (Pty) Ltd. All rights reserved. | Registration: 2020/933755/07</p>
-            <p>Empowering communities through professional services and entrepreneurship</p>
+            <span>&copy; 2024 Theshu (Pty) Ltd. Reg: 2020/933755/07. All rights reserved.</span>
+            <span>Empowering Communities Through Excellence</span>
         </div>
     </footer>
 
+    <a href="#" class="back-top" id="backTop"><i class="fas fa-arrow-up"></i></a>
+
     <script>
-        // Mobile menu toggle
-        const menuBtn = document.querySelector('.mobile-menu-btn');
-        const navLinks = document.querySelector('.nav-links');
-        
-        menuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+        // Nav scroll
+        const nav = document.getElementById('mainNav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 60);
+            document.getElementById('backTop').classList.toggle('show', window.scrollY > 400);
+        });
+        nav.classList.toggle('scrolled', window.scrollY > 60);
+
+        // Hamburger
+        const ham = document.getElementById('hamburger');
+        const mob = document.getElementById('mobileMenu');
+        ham.addEventListener('click', () => {
+            ham.classList.toggle('open');
+            mob.classList.toggle('open');
+            document.body.style.overflow = mob.classList.contains('open') ? 'hidden' : '';
         });
 
-        // Animate elements on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+        document.querySelectorAll('.mob-link').forEach(l => {
+            l.addEventListener('click', () => {
+                ham.classList.remove('open');
+                mob.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        });
 
-        const observer = new IntersectionObserver((entries) => {
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                const t = document.querySelector(a.getAttribute('href'));
+                if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+            });
+        });
+
+        // Reveal on scroll
+        const revealObs = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
+                    entry.target.classList.add('visible');
+                    revealObs.unobserve(entry.target);
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1 });
 
-        document.querySelectorAll('.service-card, .process-step').forEach(item => {
-            item.style.opacity = '0';
-            observer.observe(item);
-        });
+        document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
     </script>
 </body>
 </html>

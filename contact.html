@@ -3,777 +3,1275 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Theshu (Pty) Ltd</title>
+    <title>Contact Us — Theshu (Pty) Ltd</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" type="image/png" href="assets/TheshuLogo.png">
-
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --gold: #C9A84C;
+            --gold-light: #F0D080;
+            --navy: #0B1A33;
+            --navy-mid: #142240;
+            --navy-light: #1E3A6E;
+            --glass: rgba(255,255,255,0.08);
+            --glass-border: rgba(255,255,255,0.15);
+            --text-light: rgba(255,255,255,0.85);
+            --text-muted: rgba(255,255,255,0.55);
         }
+
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
+            font-family: 'DM Sans', sans-serif;
+            background: var(--navy);
+            color: #fff;
             overflow-x: hidden;
-            background-color: #f8fafc;
         }
 
-        /* Color scheme */
-        :root {
-            --primary-blue: #1e3a8a;
-            --secondary-blue: #3b82f6;
-            --accent-orange: #f97316;
-            --light-gray: #f8fafc;
-            --dark-gray: #374151;
-            --white: #ffffff;
-        }
-
-        /* Header */
-        .header {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
-            color: white;
-            padding: 1rem 0;
+        body::before {
+            content: '';
             position: fixed;
-            width: 100%;
-            top: 0;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.4;
+        }
+
+        /* ─── NAV ─── */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
             z-index: 1000;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
+            padding: 1.2rem 2rem;
             display: flex;
+            align-items: center;
             justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
+            transition: all 0.4s ease;
         }
 
-        .logo {
+        nav.scrolled {
+            background: rgba(11,26,51,0.88);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 0.8rem 2rem;
+        }
+
+        .nav-logo {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--white);
+            gap: 0.75rem;
             text-decoration: none;
-            transition: transform 0.3s ease;
         }
 
-       
-        .logo:hover {
-            transform: scale(1.05);
+        .nav-logo-mark {
+            width: 44px; height: 44px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 1.3rem;
+            color: var(--navy);
+            flex-shrink: 0;
+        }
+
+        .nav-logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.1;
+        }
+
+        .nav-logo-sub {
+            font-size: 0.65rem;
+            color: var(--gold);
+            font-family: 'DM Sans', sans-serif;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
         }
 
         .nav-links {
             display: flex;
+            gap: 2.5rem;
             list-style: none;
-            gap: 2rem;
         }
 
         .nav-links a {
-            color: white;
+            color: var(--text-light);
             text-decoration: none;
-            transition: all 0.3s ease;
-            position: relative;
+            font-size: 0.9rem;
             font-weight: 500;
+            letter-spacing: 0.05em;
+            position: relative;
+            transition: color 0.3s;
         }
 
         .nav-links a::after {
             content: '';
             position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: var(--accent-orange);
+            bottom: -4px; left: 0;
+            width: 0; height: 1.5px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
             transition: width 0.3s ease;
         }
 
-        .nav-links a:hover::after {
-            width: 100%;
-        }
+        .nav-links a:hover,
+        .nav-links a.active { color: var(--gold-light); }
+        .nav-links a:hover::after,
+        .nav-links a.active::after { width: 100%; }
 
-        .mobile-menu-btn {
+        .nav-cta {
+            background: linear-gradient(135deg, var(--gold), #A07830);
+            color: var(--navy) !important;
+            padding: 0.5rem 1.4rem;
+            border-radius: 50px;
+            font-weight: 600 !important;
+            transition: all 0.3s ease !important;
+        }
+        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(201,168,76,0.4); }
+
+        .hamburger {
             display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
+            flex-direction: column;
+            gap: 5px;
             cursor: pointer;
+            padding: 6px;
+            z-index: 1001;
         }
 
-        /* Page Header */
-        .page-header {
-            background: linear-gradient(rgba(30, 58, 138, 0.8), rgba(30, 58, 138, 0.8)), url('https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+        .hamburger span {
+            display: block;
+            width: 26px; height: 2px;
+            background: #fff;
+            border-radius: 2px;
+            transition: all 0.35s ease;
+            transform-origin: center;
+        }
+
+        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(11,26,51,0.97);
+            backdrop-filter: blur(20px);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2.5rem;
+        }
+
+        .mobile-menu.open { display: flex; }
+        .mobile-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+        .mobile-menu a:hover { color: var(--gold); }
+
+        /* ─── PAGE HERO ─── */
+        .page-hero {
+            position: relative;
+            min-height: 60vh;
+            display: flex;
+            align-items: flex-end;
+            padding-bottom: 5rem;
+            overflow: hidden;
+        }
+
+        .page-hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1600&q=80');
             background-size: cover;
             background-position: center;
-            color: white;
-            padding: 8rem 2rem 4rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            margin-top: 68px;
+            animation: kenburns 16s ease-in-out infinite alternate;
         }
 
-        .page-header::before {
+        @keyframes kenburns {
+            from { transform: scale(1); }
+            to { transform: scale(1.06); }
+        }
+
+        .page-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(11,26,51,0.5) 0%,
+                rgba(11,26,51,0.75) 55%,
+                rgba(11,26,51,1) 100%
+            );
+        }
+
+        .page-hero-overlay::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grain)"/></svg>');
-            opacity: 0.3;
+            inset: 0;
+            background: radial-gradient(ellipse at 30% 40%, rgba(201,168,76,0.12) 0%, transparent 60%);
         }
 
-        .page-header-content {
-            max-width: 800px;
-            margin: 0 auto;
+        .page-hero-content {
             position: relative;
             z-index: 2;
-        }
-
-        .page-header h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease;
-        }
-
-        .page-header p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            animation: fadeInUp 1s ease 0.2s both;
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 2rem;
         }
 
         .breadcrumb {
             display: flex;
-            justify-content: center;
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease 0.4s both;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.82rem;
+            color: var(--text-muted);
         }
 
-        .breadcrumb a {
-            color: var(--accent-orange);
-            text-decoration: none;
+        .breadcrumb a { color: var(--gold); text-decoration: none; transition: color 0.3s; }
+        .breadcrumb a:hover { color: var(--gold-light); }
+        .breadcrumb i { font-size: 0.6rem; }
+
+        .page-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.8rem, 6vw, 5.5rem);
+            font-weight: 900;
+            line-height: 1.05;
+            margin-bottom: 1.2rem;
         }
 
-        .breadcrumb span {
-            margin: 0 0.5rem;
-            color: #ddd;
+        .page-hero h1 em {
+            font-style: italic;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        /* Contact Section */
-        .contact {
-            padding: 4rem 2rem;
+        .page-hero-sub {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 500px;
+            line-height: 1.7;
         }
 
-        .container {
+        /* ─── SHARED ─── */
+        .section-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(201,168,76,0.2), rgba(240,208,128,0.1));
+            border: 1px solid rgba(201,168,76,0.3);
+            color: var(--gold);
+            font-size: 0.75rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            margin-bottom: 1.2rem;
+        }
+
+        .section-heading {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4.5vw, 3rem);
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 1.2rem;
+        }
+
+        .section-heading em { font-style: italic; color: var(--gold); }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* ─── CONTACT MAIN ─── */
+        .contact-section {
+            padding: 7rem 2rem;
+            background: var(--navy-mid);
+        }
+
+        .contact-inner {
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            color: var(--primary-blue);
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: var(--accent-orange);
-            border-radius: 2px;
-        }
-
-        .contact-content {
+        .contact-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1.6fr;
             gap: 3rem;
+            margin-top: 4rem;
+            align-items: start;
         }
 
-        .contact-info {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            height: fit-content;
-        }
-
-        .contact-info h3 {
-            color: var(--primary-blue);
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
+        /* ─── INFO PANEL ─── */
+        .info-panel {
             display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            flex-direction: column;
+            gap: 1.2rem;
         }
 
-        .contact-details {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-
-        .contact-details li {
+        .info-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(16px);
+            border-radius: 20px;
+            padding: 1.5rem 1.8rem;
             display: flex;
             align-items: flex-start;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--light-gray);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent-orange);
-            font-size: 1.2rem;
-            flex-shrink: 0;
-        }
-
-        .contact-text h4 {
-            color: var(--primary-blue);
-            margin-bottom: 0.3rem;
-        }
-
-        .contact-text a {
-            color: var(--dark-gray);
-            text-decoration: none;
+            gap: 1.2rem;
             transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
         }
 
-        .contact-text a:hover {
-            color: var(--accent-orange);
+        .info-card:hover {
+            background: rgba(201,168,76,0.1);
+            border-color: rgba(201,168,76,0.35);
+            transform: translateX(6px);
         }
 
-        .business-hours {
-            margin-top: 2rem;
+        .info-card-icon {
+            width: 48px; height: 48px;
+            background: linear-gradient(135deg, rgba(201,168,76,0.3), rgba(201,168,76,0.08));
+            border-radius: 14px;
+            flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--gold);
+            font-size: 1.1rem;
         }
 
-        .business-hours h4 {
-            color: var(--primary-blue);
-            margin-bottom: 1rem;
+        .info-card-label {
+            font-size: 0.72rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.3rem;
+            font-weight: 600;
+        }
+
+        .info-card-value {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.55;
+        }
+
+        /* Hours card */
+        .hours-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(16px);
+            border-radius: 20px;
+            padding: 1.8rem;
+            margin-top: 0.5rem;
+        }
+
+        .hours-title {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
+            margin-bottom: 1.3rem;
+            font-size: 0.78rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 600;
         }
 
         .hours-list {
             list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
         }
 
         .hours-list li {
             display: flex;
             justify-content: space-between;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #eee;
-        }
-
-        .hours-list li:last-child {
-            border-bottom: none;
-        }
-
-        /* Contact Form */
-        .contact-form {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .contact-form h3 {
-            color: var(--primary-blue);
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-            display: flex;
             align-items: center;
-            gap: 0.5rem;
+            padding: 0.65rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+            font-size: 0.88rem;
+        }
+
+        .hours-list li:last-child { border-bottom: none; }
+
+        .hours-list .day { color: var(--text-muted); }
+        .hours-list .time { color: var(--text-light); font-weight: 500; }
+        .hours-list .closed { color: rgba(200,80,80,0.85); font-weight: 600; }
+
+        /* Social strip */
+        .social-strip {
+            margin-top: 0.5rem;
+        }
+
+        .social-strip-title {
+            font-size: 0.72rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.9rem;
+            font-weight: 600;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .social-links a {
+            width: 44px; height: 44px;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+
+        .social-links a:hover {
+            background: rgba(24,119,242,0.2);
+            border-color: rgba(24,119,242,0.4);
+            color: #6B9FFF;
+            transform: translateY(-3px);
+        }
+
+        /* ─── FORM PANEL ─── */
+        .form-panel {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(20px);
+            border-radius: 28px;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-panel::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light), transparent);
+        }
+
+        .form-panel::after {
+            content: '';
+            position: absolute;
+            width: 350px; height: 350px;
+            background: radial-gradient(circle, rgba(201,168,76,0.05) 0%, transparent 70%);
+            bottom: -100px; right: -100px;
+            pointer-events: none;
+        }
+
+        .form-panel h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-panel-sub {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
+            position: relative;
         }
 
         .form-group label {
             display: block;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gold);
             margin-bottom: 0.5rem;
             font-weight: 600;
-            color: var(--dark-gray);
         }
 
         .form-group input,
         .form-group textarea,
         .form-group select {
             width: 100%;
-            padding: 0.75rem 1rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-family: inherit;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.12);
+            color: #fff;
+            padding: 0.9rem 1.1rem;
+            border-radius: 12px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9rem;
             transition: all 0.3s ease;
+            outline: none;
+            position: relative;
+            z-index: 1;
         }
+
+        .form-group select option { background: var(--navy-mid); color: #fff; }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder { color: var(--text-muted); }
 
         .form-group input:focus,
         .form-group textarea:focus,
         .form-group select:focus {
-            outline: none;
-            border-color: var(--accent-orange);
-            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+            background: rgba(201,168,76,0.08);
+            border-color: rgba(201,168,76,0.55);
+            box-shadow: 0 0 0 4px rgba(201,168,76,0.08);
         }
 
-        .form-group textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
+        .form-group textarea { min-height: 140px; resize: vertical; }
 
-        .submit-btn {
-            background: var(--accent-orange);
-            color: white;
+        .form-submit {
+            width: 100%;
+            background: linear-gradient(135deg, var(--gold), #A07830);
+            color: var(--navy);
             border: none;
-            padding: 1rem 2rem;
+            padding: 1.1rem 2rem;
             border-radius: 50px;
-            font-weight: bold;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
             transition: all 0.3s ease;
-            width: 100%;
-            font-size: 1.1rem;
-        }
-
-        .submit-btn:hover {
-            background: var(--primary-blue);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        /* Map Section */
-        .map-section {
-            padding: 4rem 2rem;
-            background: var(--light-gray);
-        }
-
-        .map-container {
-            border-radius: 15px;
+            position: relative;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            height: 400px;
+            margin-top: 0.5rem;
         }
 
-        .map-container iframe {
-            width: 100%;
-            height: 100%;
+        .form-submit::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .form-submit:hover::before { opacity: 1; }
+        .form-submit:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(201,168,76,0.4); }
+        .form-submit span, .form-submit i { position: relative; z-index: 1; }
+
+        /* ─── MAP ─── */
+        .map-section {
+            padding: 0 2rem 7rem;
+            background: var(--navy-mid);
+        }
+
+        .map-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .map-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .map-wrap {
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            height: 420px;
+            position: relative;
+        }
+
+        .map-wrap iframe {
+            width: 100%; height: 100%;
             border: none;
+            filter: brightness(0.85) saturate(0.7) invert(0.92) hue-rotate(190deg);
         }
 
-        /* FAQ Section */
-        .faq {
-            padding: 4rem 2rem;
-            background: white;
+        .map-overlay-badge {
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            background: rgba(11,26,51,0.9);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 14px;
+            padding: 1rem 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            z-index: 2;
+        }
+
+        .map-overlay-badge-icon {
+            width: 36px; height: 36px;
+            background: linear-gradient(135deg, var(--gold), #A07830);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--navy);
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .map-overlay-badge-text strong {
+            display: block;
+            font-size: 0.88rem;
+            font-weight: 700;
+        }
+
+        .map-overlay-badge-text span {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* ─── FAQ ─── */
+        .faq-section {
+            padding: 7rem 2rem;
+            background: linear-gradient(135deg, var(--navy-light), var(--navy-mid));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .faq-section::before {
+            content: '';
+            position: absolute;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%);
+            top: -200px; right: -200px;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .faq-inner {
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .faq-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 4rem;
         }
 
         .faq-item {
-            background: var(--light-gray);
-            padding: 1.5rem;
-            border-radius: 10px;
-            transition: all 0.3s ease;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(16px);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .faq-item::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(201,168,76,0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
         }
 
         .faq-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-6px);
+            border-color: rgba(201,168,76,0.35);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
         }
 
-        .faq-question {
-            color: var(--primary-blue);
-            margin-bottom: 1rem;
+        .faq-item:hover::before { opacity: 1; }
+
+        .faq-q-wrap {
             display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
         }
 
-        /* CTA Section */
+        .faq-q-icon {
+            width: 36px; height: 36px;
+            background: linear-gradient(135deg, rgba(201,168,76,0.3), rgba(201,168,76,0.08));
+            border-radius: 10px;
+            flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--gold);
+            font-size: 0.85rem;
+            margin-top: 2px;
+        }
+
+        .faq-item h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .faq-item p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+            padding-left: calc(36px + 1rem);
+        }
+
+        /* ─── CTA ─── */
         .cta-section {
-            padding: 4rem 2rem;
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
-            color: white;
-            text-align: center;
+            padding: 7rem 2rem;
+            background: var(--navy);
+            position: relative;
+            overflow: hidden;
         }
 
-        .cta-content {
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .cta-inner {
             max-width: 800px;
             margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
         }
 
-        .cta-content h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
+        .cta-inner h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4.5vw, 3.2rem);
+            font-weight: 900;
+            margin-bottom: 1.2rem;
+            line-height: 1.15;
         }
 
-        .cta-content p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
+        .cta-inner h2 em {
+            font-style: italic;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .cta-buttons {
+        .cta-inner p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.75;
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-btns {
             display: flex;
             gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
         }
 
-        .cta-button {
-            display: inline-block;
-            background: var(--accent-orange);
-            color: white;
-            padding: 1rem 2rem;
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: linear-gradient(135deg, var(--gold), #A07830);
+            color: var(--navy);
+            padding: 1rem 2.2rem;
             border-radius: 50px;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .btn-primary:hover::before { opacity: 1; }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(201,168,76,0.4); }
+        .btn-primary span, .btn-primary i { position: relative; z-index: 1; }
+
+        .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(12px);
+            color: #fff;
+            padding: 1rem 2.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
             transition: all 0.3s ease;
         }
 
-        .cta-button.secondary {
-            background: transparent;
-            border: 2px solid white;
-        }
-
-        .cta-button:hover {
+        .btn-ghost:hover {
+            background: rgba(255,255,255,0.15);
+            border-color: rgba(255,255,255,0.35);
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
-        /* Footer */
-        .footer {
-            background: #111;
-            color: white;
-            padding: 3rem 2rem 2rem;
+        /* ─── FOOTER ─── */
+        footer {
+            background: var(--navy-mid);
+            border-top: 1px solid var(--glass-border);
+            padding: 4rem 2rem 2rem;
         }
 
         .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
             max-width: 1200px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid var(--glass-border);
         }
 
-        .footer-col h3 {
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-bottom: 0.5rem;
+        .footer-brand p {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            line-height: 1.7;
+            margin-top: 1rem;
+            max-width: 280px;
         }
 
-        .footer-col h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 2px;
-            background: var(--accent-orange);
+        .footer-socials {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
         }
 
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-links a {
-            color: #ddd;
+        .footer-socials a {
+            width: 38px; height: 38px;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--text-muted);
+            transition: all 0.3s;
             text-decoration: none;
-            transition: all 0.3s ease;
         }
 
-        .footer-links a:hover {
-            color: var(--accent-orange);
-            padding-left: 5px;
+        .footer-socials a:hover {
+            background: rgba(201,168,76,0.2);
+            border-color: rgba(201,168,76,0.4);
+            color: var(--gold);
         }
+
+        .footer-col h4 {
+            font-size: 0.8rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.2rem;
+        }
+
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 0.6rem; }
+        .footer-col ul li a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.88rem;
+            transition: all 0.3s;
+        }
+        .footer-col ul li a:hover { color: var(--gold); padding-left: 4px; }
 
         .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            margin-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            color: var(--text-muted);
+            font-size: 0.82rem;
         }
 
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .back-top {
+            position: fixed;
+            bottom: 2rem; right: 2rem;
+            width: 48px; height: 48px;
+            background: linear-gradient(135deg, var(--gold), #A07830);
+            color: var(--navy);
+            border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            text-decoration: none;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s;
+            font-size: 1rem;
+            z-index: 500;
         }
 
-        /* Responsive Design */
-        @media (max-width: 968px) {
-            .contact-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
+        .back-top.show { opacity: 1; pointer-events: all; }
+        .back-top:hover { transform: translateY(-4px); }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: linear-gradient(135deg, var(--gold), #A07830);
+            color: var(--navy);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            z-index: 2000;
+            transition: transform 0.4s ease;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+        .toast.show { transform: translateX(-50%) translateY(0); }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 1024px) {
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .faq-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 900px) {
+            .contact-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: var(--primary-blue);
-                flex-direction: column;
-                padding: 1rem;
-                gap: 1rem;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            }
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .contact-section, .map-section, .faq-section, .cta-section { padding: 5rem 1.5rem; }
+            .map-section { padding-bottom: 5rem; }
+            .form-panel { padding: 2rem 1.5rem; }
+        }
 
-            .nav-links.active {
-                display: flex;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .page-header h1 {
-                font-size: 2.5rem;
-            }
-            
-            .page-header p {
-                font-size: 1.1rem;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
+        @media (max-width: 480px) {
+            .faq-item p { padding-left: 0; }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="nav-container">
-            <a href="index.html" class="logo">
-              <img src="assets/theshulogo.png" alt="Theshu Logo" height="80" length="80"class="logo-img">
-            </a>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html" class="active">Contact</a></li>
-                </ul>
-                <button class="mobile-menu-btn">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </nav>
-        </div>
-    </header>
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <div class="page-header-content">
+    <!-- NAV -->
+    <nav id="mainNav">
+        <a href="#home" class="nav-logo"><img src="assets/TheshuLogo.png" style="height: 44px; width: auto;" alt="Theshu Logo">
+            
+            <div>
+                <div class="nav-logo-text">Theshu</div>
+                <div class="nav-logo-sub">(Pty) Ltd</div>
+            </div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html" class="nav-cta">Get a Quote</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html" class="mob-link">Home</a>
+        <a href="services.html" class="mob-link">Services</a>
+        <a href="about.html" class="mob-link">About</a>
+        <a href="index.html#compliance" class="mob-link">Compliance</a>
+        <a href="contact.html" class="mob-link">Contact</a>
+    </div>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+        <div class="page-hero-bg"></div>
+        <div class="page-hero-overlay"></div>
+        <div class="page-hero-content">
             <div class="breadcrumb">
                 <a href="index.html">Home</a>
-                <span>/</span>
-                <a href="contact.html">Contact Us</a>
+                <i class="fas fa-chevron-right"></i>
+                <span style="color:var(--text-muted)">Contact Us</span>
             </div>
-            <h1>Get In Touch</h1>
-            <p>We're here to answer your questions and provide the services you need</p>
+            <h1>Let's Start a<br><em>Conversation</em></h1>
+            <p class="page-hero-sub">We're ready to answer your questions and bring your next event or project to life.</p>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact">
-        <div class="container">
-            <h2 class="section-title">Contact Us</h2>
-            
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3><i class="fas fa-info-circle"></i> Contact Information</h3>
-                    <ul class="contact-details">
-                        <li>
-                            <div class="contact-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Phone</h4>
-                                <a href="tel:0763095296">076 309 5296</a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Email</h4>
-                                <a href="mailto:theshubusiness@gmail.com">theshubusiness@gmail.com</a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Address</h4>
-                                <p>4277 Springbok Street<br>White City, Postmasburg<br>8420, Northern Cape</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="contact-icon">
-                                <i class="fas fa-id-card"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>CSD Number</h4>
-                                <p>MAAA1041196</p>
-                            </div>
-                        </li>
-                    </ul>
+    <!-- CONTACT SECTION -->
+    <section class="contact-section">
+        <div class="contact-inner">
+            <div style="text-align:center">
+                <div class="section-tag reveal">Reach Out</div>
+                <h2 class="section-heading reveal">We'd Love to<br><em>Hear From You</em></h2>
+            </div>
 
-                    <div class="business-hours">
-                        <h4><i class="fas fa-clock"></i> Business Hours</h4>
+            <div class="contact-grid">
+
+                <!-- LEFT: Info -->
+                <div class="info-panel">
+                    <a href="tel:0763095296" class="info-card reveal">
+                        <div class="info-card-icon"><i class="fas fa-phone"></i></div>
+                        <div>
+                            <div class="info-card-label">Phone</div>
+                            <div class="info-card-value">076 309 5296</div>
+                        </div>
+                    </a>
+
+                    <a href="mailto:theshubusiness@gmail.com" class="info-card reveal">
+                        <div class="info-card-icon"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <div class="info-card-label">Email</div>
+                            <div class="info-card-value">theshubusiness@gmail.com</div>
+                        </div>
+                    </a>
+
+                    <div class="info-card reveal" style="cursor:default;">
+                        <div class="info-card-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <div class="info-card-label">Address</div>
+                            <div class="info-card-value">4277 Springbok Street<br>White City, Postmasburg, 8420<br>Northern Cape, South Africa</div>
+                        </div>
+                    </div>
+
+                    <div class="info-card reveal" style="cursor:default;">
+                        <div class="info-card-icon"><i class="fas fa-id-card"></i></div>
+                        <div>
+                            <div class="info-card-label">CSD Number</div>
+                            <div class="info-card-value">MAAA1041196</div>
+                        </div>
+                    </div>
+
+                    <div class="hours-card reveal">
+                        <div class="hours-title">
+                            <i class="fas fa-clock"></i>
+                            Business Hours
+                        </div>
                         <ul class="hours-list">
                             <li>
-                                <span>Monday - Friday</span>
-                                <span>8:00 AM - 5:00 PM</span>
+                                <span class="day">Monday – Friday</span>
+                                <span class="time">8:00 AM – 5:00 PM</span>
                             </li>
                             <li>
-                                <span>Saturday</span>
-                                <span>9:00 AM - 1:00 PM</span>
+                                <span class="day">Saturday</span>
+                                <span class="time">9:00 AM – 1:00 PM</span>
                             </li>
                             <li>
-                                <span>Sunday</span>
-                                <span>Closed</span>
+                                <span class="day">Sunday</span>
+                                <span class="closed">Closed</span>
                             </li>
                         </ul>
                     </div>
+
+                    <div class="social-strip reveal">
+                        <div class="social-strip-title">Follow Us</div>
+                        <div class="social-links">
+                            <a href="https://www.facebook.com/share/19hMUSmaN3/?mibextid=wwXIfr" target="_blank" title="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="contact-form">
-                    <h3><i class="fas fa-envelope"></i> Send Us a Message</h3>
+                <!-- RIGHT: Form -->
+                <div class="form-panel reveal">
+                    <h3>Send Us a Message</h3>
+                    <p class="form-panel-sub">Fill in your details and we'll get back to you within 24 hours.</p>
+
                     <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Full Name *</label>
-                            <input type="text" id="name" required>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Full Name *</label>
+                                <input type="text" placeholder="Your full name" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Email Address *</label>
+                                <input type="email" placeholder="your@email.com" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Phone Number</label>
+                                <input type="tel" placeholder="e.g. 076 123 4567">
+                            </div>
+                            <div class="form-group">
+                                <label>Service Needed</label>
+                                <select>
+                                    <option value="">Select a service</option>
+                                    <option>Event Catering</option>
+                                    <option>Event Decoration</option>
+                                    <option>Cleaning Services</option>
+                                    <option>Supply Services</option>
+                                    <option>Equipment Rental</option>
+                                    <option>Memorial Services</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label for="email">Email Address *</label>
-                            <input type="email" id="email" required>
+                            <label>Event / Project Date</label>
+                            <input type="date" style="color-scheme: dark;">
                         </div>
                         <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone">
+                            <label>Message *</label>
+                            <textarea placeholder="Tell us about your event or enquiry — the more detail, the better!" required></textarea>
                         </div>
-                        <div class="form-group">
-                            <label for="service">Service Needed</label>
-                            <select id="service">
-                                <option value="">Select a service</option>
-                                <option value="catering">Event Catering</option>
-                                <option value="decoration">Event Decoration</option>
-                                <option value="cleaning">Cleaning Services</option>
-                                <option value="supply">Supply Services</option>
-                                <option value="rental">Equipment Rental</option>
-                                <option value="memorial">Memorial Services</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message *</label>
-                            <textarea id="message" required></textarea>
-                        </div>
-                        <button type="submit" class="submit-btn">Send Message</button>
+                        <button type="submit" class="form-submit">
+                            <span>Send Message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
                     </form>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Map Section -->
+    <!-- MAP -->
     <section class="map-section">
-        <div class="container">
-            <h2 class="section-title">Our Location</h2>
-            <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d55201.10706312173!2d23.066247!3d-28.333611!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e85f6e7a9e3c2a1%3A0x8b1c5b2b0b0b0b0b!2sPostmasburg!5e0!3m2!1sen!2sza!4v1620000000000!5m2!1sen!2sza" allowfullscreen="" loading="lazy"></iframe>
+        <div class="map-inner">
+            <div class="map-header">
+                <div class="section-tag reveal">Find Us</div>
+                <h2 class="section-heading reveal">Our <em>Location</em></h2>
+            </div>
+            <div class="map-wrap reveal">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d55201.10706312173!2d23.066247!3d-28.333611!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e85f6e7a9e3c2a1%3A0x8b1c5b2b0b0b0b0b!2sPostmasburg%2C%20Northern%20Cape!5e0!3m2!1sen!2sza!4v1620000000000!5m2!1sen!2sza"
+                    allowfullscreen=""
+                    loading="lazy">
+                </iframe>
+                <div class="map-overlay-badge">
+                    <div class="map-overlay-badge-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="map-overlay-badge-text">
+                        <strong>Theshu (Pty) Ltd</strong>
+                        <span>4277 Springbok Street, Postmasburg</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section class="faq">
-        <div class="container">
-            <h2 class="section-title">Frequently Asked Questions</h2>
+    <!-- FAQ -->
+    <section class="faq-section">
+        <div class="faq-inner">
+            <div style="text-align:center">
+                <div class="section-tag reveal">Common Questions</div>
+                <h2 class="section-heading reveal">Frequently Asked<br><em>Questions</em></h2>
+            </div>
             <div class="faq-grid">
-                <div class="faq-item">
-                    <h3 class="faq-question"><i class="fas fa-question-circle"></i> What areas do you serve?</h3>
-                    <p>We primarily serve the Postmasburg area and surrounding communities in the Northern Cape, but we can accommodate requests throughout the region.</p>
+                <div class="faq-item reveal">
+                    <div class="faq-q-wrap">
+                        <div class="faq-q-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <h3>What areas do you serve?</h3>
+                    </div>
+                    <p>We primarily serve Postmasburg and surrounding communities in the Northern Cape, but can accommodate requests throughout the broader region.</p>
                 </div>
-                <div class="faq-item">
-                    <h3 class="faq-question"><i class="fas fa-question-circle"></i> How far in advance should I book services?</h3>
-                    <p>We recommend booking at least 2-3 weeks in advance for events, and 1 week in advance for cleaning and supply services to ensure availability.</p>
+                <div class="faq-item reveal">
+                    <div class="faq-q-wrap">
+                        <div class="faq-q-icon"><i class="fas fa-calendar-alt"></i></div>
+                        <h3>How far in advance should I book?</h3>
+                    </div>
+                    <p>We recommend at least 2–3 weeks for events, and 1 week for cleaning and supply services to guarantee availability and proper planning.</p>
                 </div>
-                <div class="faq-item">
-                    <h3 class="faq-question"><i class="fas fa-question-circle"></i> Do you provide quotes?</h3>
-                    <p>Yes, we provide free, no-obligation quotes for all our services. Contact us with your requirements, and we'll prepare a detailed estimate.</p>
+                <div class="faq-item reveal">
+                    <div class="faq-q-wrap">
+                        <div class="faq-q-icon"><i class="fas fa-file-invoice"></i></div>
+                        <h3>Do you provide quotes?</h3>
+                    </div>
+                    <p>Yes — we provide free, no-obligation quotes for all services. Send us your requirements and we'll prepare a detailed, transparent estimate.</p>
                 </div>
-                <div class="faq-item">
-                    <h3 class="faq-question"><i class="fas fa-question-circle"></i> What payment methods do you accept?</h3>
-                    <p>We accept cash, EFT, and major credit cards. Payment terms for corporate clients can be arranged.</p>
+                <div class="faq-item reveal">
+                    <div class="faq-q-wrap">
+                        <div class="faq-q-icon"><i class="fas fa-credit-card"></i></div>
+                        <h3>What payment methods do you accept?</h3>
+                    </div>
+                    <p>We accept cash, EFT, and major credit cards. Flexible payment terms for corporate and government clients can also be arranged.</p>
+                </div>
+                <div class="faq-item reveal">
+                    <div class="faq-q-wrap">
+                        <div class="faq-q-icon"><i class="fas fa-briefcase"></i></div>
+                        <h3>Do you work with government clients?</h3>
+                    </div>
+                    <p>Absolutely. We are fully CIPC, SARS, and BEE compliant with an active CSD registration (MAAA1041196), making us eligible for government contracts.</p>
+                </div>
+                <div class="faq-item reveal">
+                    <div class="faq-q-wrap">
+                        <div class="faq-q-icon"><i class="fas fa-box-open"></i></div>
+                        <h3>Can you handle multiple services at once?</h3>
+                    </div>
+                    <p>Yes — we offer complete event packages combining catering, decoration, tent rental, and cleaning, giving you a single, hassle-free point of contact.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
+    <!-- CTA -->
     <section class="cta-section">
-        <div class="cta-content">
-            <h2>Ready to Get Started?</h2>
-            <p>Contact us today to discuss your needs and let us provide you with exceptional service that exceeds your expectations.</p>
-            <div class="cta-buttons">
-                <a href="tel:0763095296" class="cta-button"><i class="fas fa-phone"></i> Call Now</a>
-                <a href="mailto:theshubusiness@gmail.com" class="cta-button secondary"><i class="fas fa-envelope"></i> Send Email</a>
+        <div class="cta-inner reveal">
+            <div class="section-tag" style="margin-bottom:1.5rem;">Take Action</div>
+            <h2>Don't Wait — Let's<br>Make It <em>Happen</em></h2>
+            <p>Whether you're planning an event or need a supply quote, our team is ready. Call us directly or drop us a message today.</p>
+            <div class="cta-btns">
+                <a href="tel:0763095296" class="btn-primary"><i class="fas fa-phone"></i><span>Call Now</span></a>
+                <a href="mailto:theshubusiness@gmail.com" class="btn-ghost"><i class="fas fa-envelope"></i> Send Email</a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
+    <!-- FOOTER -->
+    <footer>
         <div class="footer-grid">
-            <div class="footer-col">
-                <h3>Theshu (Pty) Ltd</h3>
-                <p>Professional event management, catering, cleaning, and supply services. 100% black female owned enterprise committed to excellence and community empowerment.</p>
+            <div class="footer-brand">
+                <div class="nav-logo" style="text-decoration:none;display:inline-flex;">
+                    <div class="nav-logo-mark">T</div>
+                    <div>
+                        <div class="nav-logo-text">Theshu</div>
+                        <div class="nav-logo-sub">(Pty) Ltd</div>
+                    </div>
+                </div>
+                <p>Professional event management, catering, cleaning & supply services. 100% black female owned enterprise committed to excellence and community empowerment.</p>
+                <div class="footer-socials">
+                    <a href="https://www.facebook.com/share/19hMUSmaN3/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                </div>
             </div>
             <div class="footer-col">
-                <h3>Quick Links</h3>
-                <ul class="footer-links">
+                <h4>Navigation</h4>
+                <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="services.html">Services</a></li>
                     <li><a href="about.html">About Us</a></li>
@@ -781,72 +1279,88 @@
                 </ul>
             </div>
             <div class="footer-col">
-                <h3>Services</h3>
-                <ul class="footer-links">
+                <h4>Services</h4>
+                <ul>
                     <li><a href="services.html">Event Catering</a></li>
                     <li><a href="services.html">Event Decoration</a></li>
                     <li><a href="services.html">Cleaning Services</a></li>
                     <li><a href="services.html">Supply Services</a></li>
                     <li><a href="services.html">Equipment Rental</a></li>
+                    <li><a href="services.html">Memorial Services</a></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h3>Contact Info</h3>
-                <p><i class="fas fa-phone"></i> 076 309 5296</p>
-                <p><i class="fas fa-envelope"></i> theshubusiness@gmail.com</p>
-                <p><i class="fas fa-map-marker-alt"></i> 4277 Springbok Street, Postmasburg, 8420</p>
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="tel:0763095296">076 309 5296</a></li>
+                    <li><a href="mailto:theshubusiness@gmail.com">theshubusiness@gmail.com</a></li>
+                    <li><a href="#">Postmasburg, 8420</a></li>
+                    <li><a href="#">Northern Cape, SA</a></li>
+                </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 Theshu (Pty) Ltd. All rights reserved. | Registration: 2020/933755/07</p>
-            <p>Empowering communities through professional services and entrepreneurship</p>
+            <span>&copy; 2024 Theshu (Pty) Ltd. Reg: 2020/933755/07. All rights reserved.</span>
+            <span>Empowering Communities Through Excellence</span>
         </div>
     </footer>
 
+    <a href="#" class="back-top" id="backTop"><i class="fas fa-arrow-up"></i></a>
+    <div class="toast" id="toast">✓ Message sent! We'll be in touch within 24 hours.</div>
+
     <script>
-        // Mobile menu toggle
-        const menuBtn = document.querySelector('.mobile-menu-btn');
-        const navLinks = document.querySelector('.nav-links');
-        
-        menuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+        // Nav scroll
+        const nav = document.getElementById('mainNav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 60);
+            document.getElementById('backTop').classList.toggle('show', window.scrollY > 400);
+        });
+        nav.classList.toggle('scrolled', window.scrollY > 60);
+
+        // Hamburger
+        const ham = document.getElementById('hamburger');
+        const mob = document.getElementById('mobileMenu');
+        ham.addEventListener('click', () => {
+            ham.classList.toggle('open');
+            mob.classList.toggle('open');
+            document.body.style.overflow = mob.classList.contains('open') ? 'hidden' : '';
         });
 
-        // Form submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Simple form validation
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            
-            if (name && email && message) {
-                // Here you would typically send the form data to a server
-                alert('Thank you for your message! We will contact you shortly.');
-                this.reset();
-            } else {
-                alert('Please fill in all required fields.');
-            }
+        document.querySelectorAll('.mob-link').forEach(l => {
+            l.addEventListener('click', () => {
+                ham.classList.remove('open');
+                mob.classList.remove('open');
+                document.body.style.overflow = '';
+            });
         });
 
-        // Animate elements on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                const t = document.querySelector(a.getAttribute('href'));
+                if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+            });
+        });
 
-        const observer = new IntersectionObserver((entries) => {
+        // Reveal on scroll
+        const revealObs = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
+                    entry.target.classList.add('visible');
+                    revealObs.unobserve(entry.target);
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1 });
 
-        document.querySelectorAll('.contact-info, .contact-form, .faq-item').forEach(item => {
-            item.style.opacity = '0';
-            observer.observe(item);
+        document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+        // Form submit
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 4500);
+            this.reset();
         });
     </script>
 </body>
